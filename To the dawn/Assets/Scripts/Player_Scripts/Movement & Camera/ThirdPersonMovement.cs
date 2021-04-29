@@ -20,7 +20,6 @@ public class ThirdPersonMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
-    private bool dashTime = false;
     private float dashCooldown = 3f;
     [SerializeField] private int maxCharges;
     private int charges;
@@ -41,6 +40,8 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         // Verifys if the player in on the ground
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        // Prepare timers for dash
         timer += Time.deltaTime;
         dashTimer += Time.deltaTime;
 
@@ -49,9 +50,10 @@ public class ThirdPersonMovement : MonoBehaviour
         float targetAngle;
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        if(dashTime)
+        if(dashTimer<0.2f)
         {
             controller.Move(directionDash * (speed*4 ) * Time.deltaTime);
+            velocity.y = 0;
         }
         else if(gameObject.GetComponent<CMCameraPriority>().playerAim)
         { // Movement while player is aiming
@@ -76,17 +78,13 @@ public class ThirdPersonMovement : MonoBehaviour
         if(isGrounded && velocity.y < 0)
             velocity.y = -6f; // Descend accel
 
-        if(dashTime && dashTimer>=0.2f)
+        if(charges == maxCharges)
         {
-            dashTime = false;
-        }
-        if((charges < maxCharges) && (timer>= dashCooldown))
-        {
-            charges++;
             timer = 0;
         }
-        else if(charges == maxCharges)
+        else if((charges < maxCharges) && (timer>= dashCooldown))
         {
+            charges++;
             timer = 0;
         }
     }
@@ -104,10 +102,9 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
         controller.Move(moveDir * speed * Time.deltaTime);
-        if(Input.GetButtonDown("Dash") && charges > 0 && !dashTime)
+        if(Input.GetButtonDown("Dash") && charges > 0)
         {
             directionDash = moveDir;
-            dashTime = true;
             dashTimer = 0;
             charges--;
         }
