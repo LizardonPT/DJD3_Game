@@ -14,18 +14,26 @@ public class ThirdPersonMovement : MonoBehaviour
     Vector3 velocity;
 
     public float turnSmoothTime = 0.1f;
-    float turnSmoothVelocity;
+    private float turnSmoothVelocity;
 
-    bool isGrounded;
+    private bool isGrounded;
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
+    private bool dashTime = false;
+    private float dashCooldown = 3f;
+    [SerializeField] private int maxCharges;
+    private int charges;
+    private float timer;
+    private float dashTimer;
+    private Vector3 directionDash;
 
     
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        charges = maxCharges;
     }
 
     // Update is called once per frame
@@ -33,13 +41,19 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         // Verifys if the player in on the ground
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        timer += Time.deltaTime;
+        dashTimer += Time.deltaTime;
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         float targetAngle;
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        if(gameObject.GetComponent<CMCameraPriority>().playerAim == true) 
+        if(dashTime)
+        {
+            controller.Move(directionDash * (speed*4 ) * Time.deltaTime);
+        }
+        else if(gameObject.GetComponent<CMCameraPriority>().playerAim)
         { // Movement while player is aiming
             targetAngle = PlayerRotation(direction);
             if (direction.magnitude >= 0.1f)
@@ -50,16 +64,31 @@ public class ThirdPersonMovement : MonoBehaviour
             targetAngle = PlayerRotation(direction);
             PlayerMov(targetAngle);
         }
+
         if(isGrounded && Input.GetButtonDown("Jump"))
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -1f * gravity);
         }
-        
+
         // Gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
         if(isGrounded && velocity.y < 0)
             velocity.y = -6f; // Descend accel
+
+        if(dashTime && dashTimer>=0.2f)
+        {
+            dashTime = false;
+        }
+        if((charges < maxCharges) && (timer>= dashCooldown))
+        {
+            charges++;
+            timer = 0;
+        }
+        else if(charges == maxCharges)
+        {
+            timer = 0;
+        }
     }
 
 
@@ -75,5 +104,12 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
         controller.Move(moveDir * speed * Time.deltaTime);
+        if(Input.GetButtonDown("Dash") && charges > 0 && !dashTime)
+        {
+            directionDash = moveDir;
+            dashTime = true;
+            dashTimer = 0;
+            charges--;
+        }
     }
 }
