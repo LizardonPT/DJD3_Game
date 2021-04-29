@@ -294,6 +294,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 2047119441}
+    - target: {fileID: 5621369816593641347, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: maxCharges
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5621369816593641349, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_Name
       value: Player
@@ -304,11 +308,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5621369816749826357, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000001986106
+      value: -0.00000020287763
       objectReference: {fileID: 0}
     - target: {fileID: 5621369816749826357, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000024916744
+      value: 0.000000025452067
       objectReference: {fileID: 0}
     - target: {fileID: 5621369816749826357, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalRotation.w

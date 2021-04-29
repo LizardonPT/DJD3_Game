@@ -4,28 +4,30 @@ using UnityEngine;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
-    public CharacterController controller;
-    public Transform cam;
+    [SerializeField] private CharacterController controller;
+    [SerializeField] private Transform cam;
 
-    public float speed = 6f;
-    public float gravity = -18.81f;
-    public float jumpHeight = 1f;
+    [SerializeField] private float speed = 6f;
+    [SerializeField] private float gravity = -18.81f;
+    [SerializeField] private float jumpHeight = 1f;
 
-    Vector3 velocity;
+    private Vector3 velocity;
 
-    public float turnSmoothTime = 0.1f;
+    [SerializeField] private float turnSmoothTime = 0.1f;
     private float turnSmoothVelocity;
 
     private bool isGrounded;
-    public Transform groundCheck;
-    public float groundDistance = 0.4f;
-    public LayerMask groundMask;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float groundDistance = 0.4f;
+    [SerializeField] private LayerMask groundMask;
     private float dashCooldown = 3f;
     [SerializeField] private int maxCharges;
     private int charges;
     private float timer;
     private float dashTimer;
     private Vector3 directionDash;
+    private Vector3 directionJump;
+    private bool jump;
 
     
     // Start is called before the first frame update
@@ -38,8 +40,6 @@ public class ThirdPersonMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Verifys if the player in on the ground
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         // Prepare timers for dash
         timer += Time.deltaTime;
@@ -55,23 +55,24 @@ public class ThirdPersonMovement : MonoBehaviour
             controller.Move(directionDash * (speed*4 ) * Time.deltaTime);
             velocity.y = 0;
         }
+        else if(jump == true)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -1f * gravity);
+            jump = false;
+        }
         else if(gameObject.GetComponent<CMCameraPriority>().playerAim)
         { // Movement while player is aiming
             targetAngle = PlayerRotation(direction);
-            if (direction.magnitude >= 0.1f)
+            if (direction.magnitude >= 0.1f && isGrounded == false)
                 PlayerMov(targetAngle);
         }
-        else if (direction.magnitude >= 0.1f) 
+        else if (direction.magnitude >= 0.1f)
         { // Movement witouth player aim
             targetAngle = PlayerRotation(direction);
             PlayerMov(targetAngle);
         }
-
-        if(isGrounded && Input.GetButtonDown("Jump"))
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -1f * gravity);
-        }
-
+        // Verifys if the player in on the ground
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         // Gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
@@ -107,6 +108,11 @@ public class ThirdPersonMovement : MonoBehaviour
             directionDash = moveDir;
             dashTimer = 0;
             charges--;
+        }
+        if(isGrounded && Input.GetButtonDown("Jump"))
+        {
+            directionJump = moveDir;
+            jump = true;
         }
     }
 }
