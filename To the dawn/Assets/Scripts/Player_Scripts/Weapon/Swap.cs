@@ -8,6 +8,7 @@ public class Swap : MonoBehaviour
 
     [SerializeField] private PlasmaGun plGun;
     [SerializeField] private ElectricGun elGun;
+    [SerializeField] private int energySwap = 25;
 
     private float timer;
 
@@ -32,15 +33,23 @@ public class Swap : MonoBehaviour
 
     private void SwapGun()
     {
-        if(plGun.enabled)
+        if(gameObject.GetComponent<Energy>().energy - energySwap > 0)
         {
-            plGun.enabled = false;
-            elGun.enabled = true;
+            gameObject.GetComponent<Energy>().UpdateEnergy(energySwap);
+            if(plGun.enabled)
+            {
+                plGun.enabled = false;
+                elGun.enabled = true;
+            }
+            else
+            {
+                plGun.enabled = true;
+                elGun.enabled = false;
+            }
         }
         else
         {
-            plGun.enabled = true;
-            elGun.enabled = false;
+            Debug.Log("No energy !");
         }
     }
 }

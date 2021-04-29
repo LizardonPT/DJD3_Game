@@ -12,23 +12,14 @@ public class PlasmaGun : MonoBehaviour
 
     private float timer;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer>= fireRate)
+        if (timer>= fireRate && Input.GetButton("Fire1"))
         {
-            if(Input.GetButton("Fire1"))
-            {
-                timer = 0f;
-                FireGun();
-            }
+            timer = 0f;
+            FireGun();
         }
     }
 

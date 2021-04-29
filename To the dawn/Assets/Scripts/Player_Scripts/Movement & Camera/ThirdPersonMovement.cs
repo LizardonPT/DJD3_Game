@@ -22,12 +22,13 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private LayerMask groundMask;
     private float dashCooldown = 3f;
     [SerializeField] private int maxCharges;
+    [SerializeField] private int energyDash = 10;
     private int charges;
     private float timer;
+    private float jumpTimer;
     private float dashTimer;
-    private Vector3 directionDash;
-    private Vector3 directionJump;
     private bool jump;
+    private Vector3 moveDir;
 
     
     // Start is called before the first frame update
@@ -40,10 +41,12 @@ public class ThirdPersonMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // Verifys if the player in on the ground
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         // Prepare timers for dash
         timer += Time.deltaTime;
         dashTimer += Time.deltaTime;
+        jumpTimer += Time.deltaTime;
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -52,18 +55,24 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if(dashTimer<0.2f)
         {
-            controller.Move(directionDash * (speed*4 ) * Time.deltaTime);
+            controller.Move(moveDir * (speed*4) * Time.deltaTime);
             velocity.y = 0;
         }
-        else if(jump == true)
+        else if(jump)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -1f * gravity);
-            jump = false;
+            if(vertical != 0f || horizontal != 0f)
+            {
+                controller.Move(moveDir * (speed*1.2f) * Time.deltaTime);
+            }
+            if(isGrounded && jumpTimer>= 0.1f)
+            {
+                jump = false;
+            }
         }
         else if(gameObject.GetComponent<CMCameraPriority>().playerAim)
         { // Movement while player is aiming
             targetAngle = PlayerRotation(direction);
-            if (direction.magnitude >= 0.1f && isGrounded == false)
+            if (direction.magnitude >= 0.1f)
                 PlayerMov(targetAngle);
         }
         else if (direction.magnitude >= 0.1f)
@@ -71,13 +80,30 @@ public class ThirdPersonMovement : MonoBehaviour
             targetAngle = PlayerRotation(direction);
             PlayerMov(targetAngle);
         }
-        // Verifys if the player in on the ground
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        //dash
+        if(Input.GetButtonDown("Dash") && charges > 0 && (gameObject.GetComponent<Energy>().energy - energyDash > 0))
+        {
+            dashTimer = 0;
+            charges--;
+            gameObject.GetComponent<Energy>().UpdateEnergy(energyDash);
+        }
+
+        //Jump
+        if(isGrounded && Input.GetButtonDown("Jump"))
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -1f * gravity);
+            jump = true;
+            jumpTimer = 0;
+        }
+
         // Gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
-        if(isGrounded && velocity.y < 0)
-            velocity.y = -6f; // Descend accel
+        if(!isGrounded && velocity.y < 0)
+        {
+            velocity.y = -4f; // Descend accel
+        }
 
         if(charges == maxCharges)
         {
@@ -90,7 +116,6 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
-
     private float PlayerRotation(Vector3 direction)
     {
         float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
@@ -101,18 +126,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     private void PlayerMov(float targetAngle)
     {
-        Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+        moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
         controller.Move(moveDir * speed * Time.deltaTime);
-        if(Input.GetButtonDown("Dash") && charges > 0)
-        {
-            directionDash = moveDir;
-            dashTimer = 0;
-            charges--;
-        }
-        if(isGrounded && Input.GetButtonDown("Jump"))
-        {
-            directionJump = moveDir;
-            jump = true;
-        }
     }
 }

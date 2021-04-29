@@ -16,13 +16,10 @@ public class ElectricGun : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer>= fireRate)
+        if (timer>= fireRate && Input.GetButton("Fire1"))
         {
-            if(Input.GetButton("Fire1"))
-            {
-                timer = 0f;
-                FireGun();
-            }
+            timer = 0f;
+            FireGun();
         }
     }
 
