@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Swap : MonoBehaviour
 {
@@ -10,12 +11,16 @@ public class Swap : MonoBehaviour
     [SerializeField] private ElectricGun elGun;
     [SerializeField] private int energySwap = 25;
 
+    [SerializeField] private TextMeshProUGUI weaponText;
+    [SerializeField] private Animator interfaceAnim;
+
+
     private float timer;
 
     // Start is called before the first frame update
-    void Start()
+    void awake()
     {
-        
+
     }
 
     void Update()
@@ -40,16 +45,18 @@ public class Swap : MonoBehaviour
             {
                 plGun.enabled = false;
                 elGun.enabled = true;
+                weaponText.text = "EletricGun";
             }
             else
             {
                 plGun.enabled = true;
                 elGun.enabled = false;
+                weaponText.text = "PlasmaGun";
             }
         }
         else
         {
-            Debug.Log("No energy !");
+            interfaceAnim.SetTrigger("NoEnergy");
         }
     }
 }

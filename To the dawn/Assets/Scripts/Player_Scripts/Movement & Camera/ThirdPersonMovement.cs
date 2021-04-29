@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
+    [SerializeField] private Animator interfaceAnim;
+    [SerializeField] private TextMeshProUGUI dashChargeText;
     [SerializeField] private CharacterController controller;
     [SerializeField] private Transform cam;
 
@@ -11,24 +14,27 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private float gravity = -18.81f;
     [SerializeField] private float jumpHeight = 1f;
 
-    private Vector3 velocity;
-
     [SerializeField] private float turnSmoothTime = 0.1f;
-    private float turnSmoothVelocity;
 
-    private bool isGrounded;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundDistance = 0.4f;
     [SerializeField] private LayerMask groundMask;
-    private float dashCooldown = 3f;
     [SerializeField] private int maxCharges;
     [SerializeField] private int energyDash = 10;
+
+
+    private bool isGrounded;
+    private bool jump;
+
     private int charges;
     private float timer;
     private float jumpTimer;
     private float dashTimer;
-    private bool jump;
+    private float turnSmoothVelocity;
+    private float dashCooldown = 3f;
+
     private Vector3 moveDir;
+    private Vector3 velocity;
 
     
     // Start is called before the first frame update
@@ -36,6 +42,7 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         charges = maxCharges;
+        dashChargeText.text = maxCharges.ToString();
     }
 
     // Update is called once per frame
@@ -69,27 +76,38 @@ public class ThirdPersonMovement : MonoBehaviour
                 jump = false;
             }
         }
+        // Movement while player is aiming
         else if(gameObject.GetComponent<CMCameraPriority>().playerAim)
-        { // Movement while player is aiming
+        {
             targetAngle = PlayerRotation(direction);
             if (direction.magnitude >= 0.1f)
                 PlayerMov(targetAngle);
         }
+        // Movement witouth player aim
         else if (direction.magnitude >= 0.1f)
-        { // Movement witouth player aim
+        {
             targetAngle = PlayerRotation(direction);
             PlayerMov(targetAngle);
         }
 
-        //dash
+        // Dash
         if(Input.GetButtonDown("Dash") && charges > 0 && (gameObject.GetComponent<Energy>().energy - energyDash > 0))
         {
             dashTimer = 0;
             charges--;
             gameObject.GetComponent<Energy>().UpdateEnergy(energyDash);
+            dashChargeText.text = charges.ToString();
+        }
+        else if (Input.GetButtonDown("Dash") && charges == 0)
+        {
+            interfaceAnim.SetTrigger("NoCharges");
+        }
+        else if (Input.GetButtonDown("Dash") && (gameObject.GetComponent<Energy>().energy - energyDash > 0))
+        {
+            interfaceAnim.SetTrigger("NoEnergy");
         }
 
-        //Jump
+        // Jump
         if(isGrounded && Input.GetButtonDown("Jump"))
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -1f * gravity);
@@ -113,6 +131,7 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             charges++;
             timer = 0;
+            dashChargeText.text = charges.ToString();
         }
     }
 
