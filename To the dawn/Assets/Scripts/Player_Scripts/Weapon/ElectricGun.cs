@@ -6,7 +6,8 @@ public class ElectricGun : MonoBehaviour
 {
     [SerializeField] private float fireRate = 0.5f;
 
-    [SerializeField] private int damage = 1;
+    [SerializeField] private int damage = 2;
+    [SerializeField] private int useEnergyPerShoot = 1;
 
     [SerializeField] private Transform firePoint;
 
@@ -31,7 +32,13 @@ public class ElectricGun : MonoBehaviour
 
         if (Physics.Raycast(ray,out hitInfo, 100))
         {
-            Destroy(hitInfo.collider.gameObject);
+            HP hp = hitInfo.collider.gameObject.GetComponent<HP>();
+            if(hp)
+            {
+                hp.HPModifier(damage, "electric");
+            }
         }
+
+        gameObject.GetComponent<Energy>().UpdateEnergy(useEnergyPerShoot);
     }
 }

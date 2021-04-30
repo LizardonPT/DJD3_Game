@@ -52,7 +52,7 @@ public class BaseEnemyAI : MonoBehaviour
 
     private void BaseAiPatrol() // PATROLING IS KILLING THE FPS
     {
-        Debug.Log("patroll"); 
+        // Debug.Log("patroll"); 
         if(!walkPointSet) SearchWalkPoint();
 
         if(walkPointSet) agent.SetDestination(walkPoint);

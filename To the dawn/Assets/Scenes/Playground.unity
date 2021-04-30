@@ -1563,31 +1563,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5621369816749826357, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0039644614
+      value: -0.003963873
       objectReference: {fileID: 0}
     - target: {fileID: 5621369816749826357, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000020228414
+      value: -0.017316673
       objectReference: {fileID: 0}
     - target: {fileID: 5621369816749826357, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00000002537761
+      value: 0.0021724673
       objectReference: {fileID: 0}
     - target: {fileID: 5621369816749826357, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99999213
+      value: 0.9998399
       objectReference: {fileID: 0}
     - target: {fileID: 5621369816749826357, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.20939463
       objectReference: {fileID: 0}
     - target: {fileID: 5621369816749826357, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.00046928006
       objectReference: {fileID: 0}
     - target: {fileID: 5621369816749826357, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.0036242276
       objectReference: {fileID: 0}
     - target: {fileID: 5621369816994312630, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_Layer
@@ -2219,6 +2219,8 @@ GameObject:
   - component: {fileID: 1174544239}
   - component: {fileID: 1174544238}
   - component: {fileID: 1174544237}
+  - component: {fileID: 1174544243}
+  - component: {fileID: 1174544244}
   m_Layer: 0
   m_Name: BasicEnemyAI
   m_TagString: Untagged
@@ -2350,11 +2352,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1174544243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174544236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b3d83ce24b0524997fb2c2fd51445f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 5
+--- !u!114 &1174544244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174544236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aac91a8d338c26540854d4aa1c8ecdce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  electArmor: 2
+  plasmaArmor: 0
 --- !u!1 &1358298274 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5621369816593641349, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
   m_PrefabInstance: {fileID: 907148762}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1358298275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358298274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b3d83ce24b0524997fb2c2fd51445f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 5
 --- !u!4 &1358298278 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5621369816593641346, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
@@ -2367,13 +2409,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1358298274}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7df7137efdd9b594cbc27f181266b978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 0.5
   damage: 1
+  useEnergyPerShoot: 1
   firePoint: {fileID: 251727606}
 --- !u!114 &1358298280
 MonoBehaviour:
@@ -2389,6 +2432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 1
   damage: 3
+  useEnergyPerShoot: 2
   firePoint: {fileID: 251727606}
 --- !u!114 &1358298281
 MonoBehaviour:
@@ -2405,7 +2449,7 @@ MonoBehaviour:
   swapCooldown: 2
   plGun: {fileID: 1358298280}
   elGun: {fileID: 1358298279}
-  energySwap: 25
+  energySwap: 20
   weaponText: {fileID: 528194572}
   interfaceAnim: {fileID: 955966370}
 --- !u!114 &1358298282

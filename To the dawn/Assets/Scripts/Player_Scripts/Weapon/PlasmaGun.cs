@@ -7,7 +7,7 @@ public class PlasmaGun : MonoBehaviour
     [SerializeField] private float fireRate = 1f;
 
     [SerializeField] private int damage = 3;
-
+    [SerializeField] private int useEnergyPerShoot = 2;
     [SerializeField] private Transform firePoint;
 
     private float timer;
@@ -31,7 +31,13 @@ public class PlasmaGun : MonoBehaviour
 
         if (Physics.Raycast(ray,out hitInfo, 100))
         {
-            Destroy(hitInfo.collider.gameObject);
+            HP hp = hitInfo.collider.gameObject.GetComponent<HP>();
+            if(hp)
+            {
+                hp.HPModifier(damage, "plasma");
+            }
         }
+
+        gameObject.GetComponent<Energy>().UpdateEnergy(useEnergyPerShoot);
     }
 }
