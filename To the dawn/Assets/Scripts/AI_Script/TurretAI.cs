@@ -7,24 +7,43 @@ public class TurretAI : MonoBehaviour
     [SerializeField] private LayerMask whatIsPlayer= default;
     [SerializeField] private float sightRange;
     [SerializeField] private float cooldown;
+    [SerializeField] private float timer;
     private bool alreadyAttacked;
-
-    private bool playerInSightRange;
+    private Collider[] playerInSightRange;
+    private Vector3 player;
 
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        playerInSightRange = Physics.OverlapSphere(transform.position, sightRange, whatIsPlayer);
 
-        if(playerInSightRange) TurretAiAttack();
+        if(playerInSightRange.Length > 0)
+        {
+            if(timer == 0)
+            {
+                player = playerInSightRange[0].transform.position;
+            }
+
+            timer += Time.deltaTime;
+
+            if(timer >= 0.1f)
+            {
+                TurretAiAttack(player);
+                timer = 0;
+            }
+        }
+        else
+        {
+            timer = 0;
+        }
     }
 
-    private void TurretAiAttack()
+    private void TurretAiAttack(Vector3 player)
     {
         if(!alreadyAttacked)
         {
-            Debug.Log("A turret is attacking you!!");
+            gameObject.GetComponent<AIWeapon>().Fire(player);
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), cooldown);

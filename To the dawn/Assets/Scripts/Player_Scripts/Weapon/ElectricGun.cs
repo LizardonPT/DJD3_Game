@@ -29,17 +29,19 @@ public class ElectricGun : MonoBehaviour
         // Create ray from the camera, with the directiom from the gun to 
         // the end of the ray
         Ray ray = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
-        Vector3 direction = ray.direction.normalized;
+        Vector3 direction;
         RaycastHit hitInfo;
 
         // Creates thunder effect
-        GameObject newthunder = Instantiate(thunder, firePoint.position, Quaternion.LookRotation(direction));
-        newthunder.GetComponent<LightningBoltScript>().StartPosition = firePoint.position;
+        GameObject newthunder;
 
         // If it hits something ...
         if (Physics.Raycast(ray,out hitInfo, 100))
         {
-            // ... creates thunder effect until impact and removes HP
+            direction = (hitInfo.point - firePoint.position).normalized;
+
+            newthunder = Instantiate(thunder, firePoint.position, Quaternion.LookRotation(direction));
+            newthunder.GetComponent<LightningBoltScript>().StartPosition = firePoint.position;
             newthunder.GetComponent<LightningBoltScript>().EndPosition = hitInfo.point;
 
             HP hp = hitInfo.collider.gameObject.GetComponent<HP>();
@@ -51,7 +53,8 @@ public class ElectricGun : MonoBehaviour
         // If it does not ...
         else
         {
-            // ... just creates a thunder effect to the end of the ray
+            newthunder = Instantiate(thunder, firePoint.position, Quaternion.LookRotation(ray.direction));
+            newthunder.GetComponent<LightningBoltScript>().StartPosition = firePoint.position;
             newthunder.GetComponent<LightningBoltScript>().EndPosition = ray.direction * 100;
         }
 

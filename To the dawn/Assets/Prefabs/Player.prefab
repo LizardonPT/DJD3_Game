@@ -586,6 +586,7 @@ GameObject:
   - component: {fileID: 1358298280}
   - component: {fileID: 1358298281}
   - component: {fileID: 1358298282}
+  - component: {fileID: 469320317665824834}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -751,6 +752,20 @@ MonoBehaviour:
   energyMax: 100
   energy: 0
   energyText: {fileID: 0}
+--- !u!114 &469320317665824834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5621369816593641349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aac91a8d338c26540854d4aa1c8ecdce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  electArmor: 0
+  plasmaArmor: 0
 --- !u!1 &5621369816749826356
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,15 +13,7 @@ public class Swap : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI weaponText;
     [SerializeField] private Animator interfaceAnim;
-
-
     private float timer;
-
-    // Start is called before the first frame update
-    void awake()
-    {
-
-    }
 
     void Update()
     {
