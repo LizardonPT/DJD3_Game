@@ -33,15 +33,18 @@ public class PlasmaGun : MonoBehaviour
     {
         Ray ray = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
         Debug.DrawRay(firePoint.position, ray.direction * 100, Color.blue, 2f);
-        Vector3 direction = (ray.direction * 100 - firePoint.position).normalized;
         RaycastHit hitInfo;
+        Vector3 direction;
+        LineRenderer plasmalr;
 
-        LineRenderer plasmalr = Instantiate(lineRend, firePoint.position, Quaternion.LookRotation(direction));
         //Draw line
         //LineRenderer plasmalr = plasma.GetComponent<LineRenderer>();
         if (Physics.Raycast(ray,out hitInfo, 100))
         {
+            direction = (hitInfo.point - firePoint.position).normalized;
+            plasmalr = Instantiate(lineRend, firePoint.position, Quaternion.LookRotation(direction));
             plasmalr.SetPosition(1, new Vector3(0,0,hitInfo.distance));
+
             HP hp = hitInfo.collider.gameObject.GetComponent<HP>();
             if(hp)
             {
@@ -49,8 +52,10 @@ public class PlasmaGun : MonoBehaviour
             }
         }
         else{
+            plasmalr = Instantiate(lineRend, firePoint.position, Quaternion.LookRotation(ray.direction));
             plasmalr.SetPosition(1, new Vector3(0,0,500));
         }
+
         Destroy(plasmalr.gameObject, 0.3f);
         gameObject.GetComponent<Energy>().UpdateEnergy(useEnergyPerShoot);
     }

@@ -29,7 +29,7 @@ public class ElectricGun : MonoBehaviour
         // Create ray from the camera, with the directiom from the gun to 
         // the end of the ray
         Ray ray = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
-        Vector3 direction = (ray.direction * 100 - firePoint.position).normalized;
+        Vector3 direction = ray.direction.normalized;
         RaycastHit hitInfo;
 
         // Creates thunder effect
