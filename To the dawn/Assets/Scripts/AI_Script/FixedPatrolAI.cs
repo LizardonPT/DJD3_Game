@@ -8,12 +8,9 @@ public class FixedPatrolAI : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround= default, whatIsPlayer= default;
 
     // Patroling
+    [SerializeField] private Transform[] path;
+    [SerializeField] private float checkpointArea;
 
-    [SerializeField] private Transform startPatrol;
-    [SerializeField] private Transform checkpoint1;
-    [SerializeField] private Transform checkpoint2;
-    [SerializeField] private Transform checkpoint3;
-    [SerializeField] private Transform endPatrol;
     private Vector3 walkPoint;
     private int patrolRoute = 0;
     private bool walkPointSet = false;
@@ -59,31 +56,14 @@ public class FixedPatrolAI : MonoBehaviour
         
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
         // Walkpoint reached
-        if (distanceToWalkPoint.magnitude < 5f) walkPointSet = false;       
+        if (distanceToWalkPoint.magnitude < checkpointArea) walkPointSet = false;       
     }
 
     private void NextPatrol()
     {
-        switch (patrolRoute)
-        {
-            case 0:
-                walkPoint = new Vector3(startPatrol.position.x, startPatrol.position.y, startPatrol.position.z);
-                break;
-            case 1:
-                walkPoint = new Vector3(checkpoint1.position.x, checkpoint1.position.y, checkpoint1.position.z);
-                break;
-            case 2:
-                walkPoint = new Vector3(checkpoint2.position.x, checkpoint2.position.y, checkpoint2.position.z);
-                break;
-            case 3:
-                walkPoint = new Vector3(checkpoint3.position.x, checkpoint3.position.y, checkpoint3.position.z);
-                break;
-            case 4:
-                walkPoint = new Vector3(endPatrol.position.x, endPatrol.position.y, endPatrol.position.z);
-                break;
-        }
+        walkPoint = new Vector3(path[patrolRoute].position.x,path[patrolRoute].position.y, path[patrolRoute].position.z);
         walkPointSet = true;
-        if(++patrolRoute > 4) patrolRoute = 0;
+        if(++patrolRoute >= path.Length) patrolRoute = 0;
     }
 
     private void BaseAiChase()
