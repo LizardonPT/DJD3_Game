@@ -5,7 +5,6 @@ public class BaseEnemyAI : MonoBehaviour
 {
     [SerializeField] private Transform player = default;
     [SerializeField] private NavMeshAgent agent;
-
     [SerializeField] private LayerMask whatIsGround= default, whatIsPlayer= default;
 
     // Patroling
@@ -27,41 +26,46 @@ public class BaseEnemyAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        // Checkfor sight and attack range
+        // Checkif the player is in sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-        
+
+        // If the player is neither is sight nor in attack range
+        // AI will patroll
         if(!playerInSightRange && !playerInAttackRange) BaseAiPatrol();
+        // If player is in sight but not in attack range chase him
         if(playerInSightRange && !playerInAttackRange) BaseAiChase();
+        // If player is in sight and attack range attack him
         if(playerInSightRange && playerInAttackRange) BaseAiAttack();
+    }
+
+    private void BaseAiPatrol()
+    {
+        // If no walkpoint is not set, define a new one
+        if(!walkPointSet) SearchWalkPoint();
+
+        // If walkpoint is set go there
+        if(walkPointSet) agent.destination = walkPoint;
+        
+        Vector3 distanceToWalkPoint = transform.position - walkPoint;
+
+        // Walkpoint reached
+        if (distanceToWalkPoint.magnitude < 15f)
+            walkPointSet = false;
     }
 
     private void SearchWalkPoint()
     {
-        //Calculate random point in range
+        // Generate random point in range and define it as walkpoint
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
-
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if(Physics.Raycast(walkPoint, transform.up, 2f, whatIsGround))
+        // Verifies if the point is on the ground
+        if(Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
             walkPointSet = true;
-    }
-
-    private void BaseAiPatrol() // PATROLING IS KILLING THE FPS
-    {
-        // Debug.Log("patroll"); 
-        if(!walkPointSet) SearchWalkPoint();
-
-        if(walkPointSet) agent.SetDestination(walkPoint);
-        
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
-        //Walkpoint reached
-        if (distanceToWalkPoint.magnitude < 1f)
-            walkPointSet = false;
     }
 
     private void BaseAiChase()
@@ -78,12 +82,12 @@ public class BaseEnemyAI : MonoBehaviour
 
         if(!alreadyAttacked)
         {
-            //Attack Code here
+            // Attack Code here
             Debug.Log("A robot has attacked you!"); 
 
 
 
-            /// 
+            //
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
