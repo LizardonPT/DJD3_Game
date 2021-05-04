@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Door : MonoBehaviour {
 
-    
 
     private int trDoorOpen = Animator.StringToHash("DoorOpen");
     private int trDoorClose = Animator.StringToHash("DoorClose");
@@ -38,6 +35,4 @@ public class Door : MonoBehaviour {
             animator.SetTrigger(trDoorClose);
         }
     }
-
-
 }

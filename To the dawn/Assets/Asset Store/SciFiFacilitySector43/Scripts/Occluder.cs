@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Occluder : MonoBehaviour
 {
@@ -22,6 +20,4 @@ public class Occluder : MonoBehaviour
             Zone.SetActive(true);
         }
     }
-
-   
 }

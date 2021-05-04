@@ -8,7 +8,7 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private CharacterController controller = default;
     [SerializeField] private Transform cam = default;
 
-    [SerializeField] private float speed = 6f;
+    public float speed = 6f;
     [SerializeField] private float gravity = -18.81f;
     [SerializeField] private float jumpHeight = 1f;
 

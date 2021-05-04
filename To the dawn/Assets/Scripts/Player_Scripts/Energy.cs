@@ -6,8 +6,8 @@ public class Energy : MonoBehaviour
     [SerializeField] private int energyMax = 100;
     public int energy;
     private float timer;
-
-    [SerializeField] private TextMeshProUGUI energyText = default;
+    private int boost;
+    [SerializeField] private TextMeshProUGUI energyText;
 
     void Start()
     {
@@ -26,9 +26,22 @@ public class Energy : MonoBehaviour
         else if((energy < energyMax) && (timer >= 1f))
         {
             energy++;
+            if(boost > 0)
+            {
+                energy += boost;
+                if(energy > energyMax)
+                {
+                    energy = energyMax;
+                }
+            }
             timer = 0;
         }
         energyText.text = energy.ToString();
+    }
+
+    public void AdrenalineBoost(int extraBoost)
+    {
+        boost = extraBoost;
     }
 
     public void UpdateEnergy(int usedEnergy)

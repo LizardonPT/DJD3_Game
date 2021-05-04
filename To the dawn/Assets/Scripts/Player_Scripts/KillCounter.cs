@@ -23,12 +23,20 @@ public class KillCounter : MonoBehaviour
             timer -= Time.deltaTime;
         }
 
+        KillRewards();
+
         killText.text = killScore.ToString();
     }
 
-    public void killUpdate()
+    public void KillUpdate()
     {
-        killScore += 1;
+        killScore++;
         timer = maxTimer;
+    }
+
+    private void KillRewards()
+    {
+        gameObject.GetComponent<ThirdPersonMovement>().speed = 6 + Mathf.Min(killScore/2,6);
+        gameObject.GetComponent<Energy>().AdrenalineBoost(Mathf.Min(killScore/3,4));
     }
 }

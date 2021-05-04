@@ -24,13 +24,16 @@ public class HP : MonoBehaviour
         if(hp <= 0)
         {
             Destroy(gameObject);
-            
+
             if(gameObject.layer == 9)
             {
                 //DeathScreen
             }
-            else GameObject.Find("Player").GetComponent<KillCounter>().killUpdate();
-
+            else
+            {
+                GameObject.Find("Player").GetComponent<KillCounter>().
+                    KillUpdate();
+            }
         }
     }
 }

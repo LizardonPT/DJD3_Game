@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FPController : MonoBehaviour {
 
@@ -53,8 +51,5 @@ public class FPController : MonoBehaviour {
 		speedCombined = transform.rotation * speedCombined;
 
 		cc.Move (speedCombined * Time.deltaTime);
-
-
-
 	}
 }

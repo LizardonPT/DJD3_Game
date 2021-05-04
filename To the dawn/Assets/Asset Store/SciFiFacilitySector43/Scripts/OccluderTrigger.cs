@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class OccluderTrigger : MonoBehaviour
 {
-   
     public enum Occlusion { enable_Zone, disable_Zone}
     public Occlusion OcclusionAction;
 
@@ -31,6 +28,5 @@ public class OccluderTrigger : MonoBehaviour
         if(Time.timeSinceLevelLoad < 3 && other.tag.Equals("GameController")) {
             Occl.enableZone();
         }
-        
     }
 }
