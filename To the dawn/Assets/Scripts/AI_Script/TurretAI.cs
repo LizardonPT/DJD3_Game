@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TurretAI : MonoBehaviour
 {
@@ -20,18 +18,21 @@ public class TurretAI : MonoBehaviour
 
         if(playerInSightRange.Length > 0)
         {
-            if(timer == 0)
+            if(!Physics.Raycast(transform.position, playerInSightRange[0].transform.position - transform.position, Vector3.Distance(playerInSightRange[0].transform.position,transform.position), 1 << LayerMask.NameToLayer("isGround")))
             {
-                transform.LookAt(playerInSightRange[0].transform);
-                player = playerInSightRange[0].transform.position;
-            }
+                if(timer == 0)
+                {
+                    transform.LookAt(playerInSightRange[0].transform);
+                    player = playerInSightRange[0].transform.position;
+                }
 
-            timer += Time.deltaTime;
+                timer += Time.deltaTime;
 
-            if(timer >= 0.1f)
-            {
-                TurretAiAttack();
-                timer = 0;
+                if(timer >= 0.1f)
+                {
+                    TurretAiAttack();
+                    timer = 0;
+                }
             }
         }
         else

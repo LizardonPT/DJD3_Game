@@ -47,7 +47,10 @@ public class FixedPatrolAI : MonoBehaviour
                 BaseAiChase();
             }
             // If he sees you for the first time, chase activates
-            else if(!Physics.Raycast(transform.position, playerInSightRange[0].transform.position - transform.position, 100, 1 << LayerMask.NameToLayer("isGround")))
+            else if(!Physics.Raycast(transform.position, 
+                playerInSightRange[0].transform.position - transform.position,
+                Vector3.Distance(playerInSightRange[0].transform.position,
+                transform.position), 1 << LayerMask.NameToLayer("isGround")))
             {
                 chaseMode = true;
                 BaseAiChase();
@@ -62,7 +65,10 @@ public class FixedPatrolAI : MonoBehaviour
         else if(playerInSightRange.Length > 0 && playerInAttackRange.Length > 0)
         {
             // If he sees you and you are in attack range, then attack
-            if(!Physics.Raycast(transform.position, playerInAttackRange[0].transform.position - transform.position, 100, 1 << LayerMask.NameToLayer("isGround")))
+            if(!Physics.Raycast(transform.position, 
+                playerInAttackRange[0].transform.position - transform.position,
+                Vector3.Distance(playerInAttackRange[0].transform.position,
+                transform.position), 1 << LayerMask.NameToLayer("isGround")))
             {
                 chaseMode = true;
 
@@ -81,7 +87,11 @@ public class FixedPatrolAI : MonoBehaviour
                 }
             }
             // If he saw you but you are behind a wall, then he chases
-            else if(Physics.Raycast(transform.position, playerInAttackRange[0].transform.position - transform.position, 100, 1 << LayerMask.NameToLayer("isGround")) && chaseMode)
+            else if(Physics.Raycast(transform.position,
+                playerInAttackRange[0].transform.position - transform.position,
+                Vector3.Distance(playerInAttackRange[0].transform.position,
+                transform.position), 1 << LayerMask.NameToLayer("isGround"))
+                && chaseMode)
             {
                 timer = 0;
                 BaseAiChase();
