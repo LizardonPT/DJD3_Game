@@ -17,6 +17,7 @@ public class FixedPatrolAI : MonoBehaviour
     private int patrolRoute = 0;
     private bool walkPointSet = false;
     private bool alreadyAttacked;
+    private bool chaseMode = false;
     private Vector3 player = default;
 
     private void Awake()
@@ -32,29 +33,65 @@ public class FixedPatrolAI : MonoBehaviour
 
         // If the player is neither is sight nor in attack range
         // AI will patroll
-        if(playerInSightRange.Length == 0 && playerInAttackRange.Length == 0) BaseAiPatrol();
-        // If player is in sight but not in attack range chase him
-        if(playerInSightRange.Length > 0 && playerInAttackRange.Length == 0) BaseAiChase();
-        // If player is in sight and attack range attack him
-        if(playerInSightRange.Length > 0 && playerInAttackRange.Length > 0)
+        if(playerInSightRange.Length == 0 && playerInAttackRange.Length == 0)
         {
-            if(timer == 0)
+            chaseMode = false;
+            BaseAiPatrol();
+        }
+        // If player is in sight but not in attack range chase him
+        else if(playerInSightRange.Length > 0 && playerInAttackRange.Length == 0)
+        {
+            // If he saw you, he will chase
+            if(chaseMode)
             {
-                transform.LookAt(playerInAttackRange[0].transform);
-                player = playerInAttackRange[0].transform.position;
+                BaseAiChase();
             }
-
-            timer += Time.deltaTime;
-
-            if(timer >= 0.1f)
+            // If he sees you for the first time, chase activates
+            else if(!Physics.Raycast(transform.position, playerInSightRange[0].transform.position - transform.position, 100, 1 << LayerMask.NameToLayer("isGround")))
             {
-                BaseAiAttack();
-                timer = 0;
+                chaseMode = true;
+                BaseAiChase();
+            }
+            // If he never saw you even in sight range, then no chase
+            else
+            {
+                BaseAiPatrol();
             }
         }
-        else
+        // If player is in sight and attack range attack him
+        else if(playerInSightRange.Length > 0 && playerInAttackRange.Length > 0)
         {
-            timer = 0;
+            // If he sees you and you are in attack range, then attack
+            if(!Physics.Raycast(transform.position, playerInAttackRange[0].transform.position - transform.position, 100, 1 << LayerMask.NameToLayer("isGround")))
+            {
+                chaseMode = true;
+
+                if(timer == 0)
+                {
+                    transform.LookAt(playerInAttackRange[0].transform);
+                    player = playerInAttackRange[0].transform.position;
+                }
+
+                timer += Time.deltaTime;
+
+                if(timer >= 0.1f)
+                {
+                    BaseAiAttack();
+                    timer = 0;
+                }
+            }
+            // If he saw you but you are behind a wall, then he chases
+            else if(Physics.Raycast(transform.position, playerInAttackRange[0].transform.position - transform.position, 100, 1 << LayerMask.NameToLayer("isGround")) && chaseMode)
+            {
+                timer = 0;
+                BaseAiChase();
+            }
+            // If he never saw you even in attack range, then no chase
+            else
+            {
+                timer = 0;
+                BaseAiPatrol();
+            }
         }
     }
 
@@ -82,7 +119,7 @@ public class FixedPatrolAI : MonoBehaviour
 
     private void BaseAiChase()
     {
-        agent.speed = 6;
+        agent.speed = 4;
         agent.SetDestination(playerInSightRange[0].transform.position);
     }
 
