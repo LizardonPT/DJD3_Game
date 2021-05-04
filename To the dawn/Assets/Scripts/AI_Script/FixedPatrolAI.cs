@@ -3,28 +3,21 @@ using UnityEngine.AI;
 
 public class FixedPatrolAI : MonoBehaviour
 {
-    private Vector3 player = default;
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private LayerMask whatIsGround= default, whatIsPlayer= default;
-
-    // Patroling
     [SerializeField] private Transform[] path;
     [SerializeField] private float checkpointArea;
     [SerializeField] private float timer;
+    [SerializeField] private float timeBetweenAttacks = default;
+    [SerializeField] float sightRange = default;
+    [SerializeField] float attackRange = default;
+    private Collider[] playerInSightRange;
     private Collider[] playerInAttackRange;
     private Vector3 walkPoint;
     private int patrolRoute = 0;
     private bool walkPointSet = false;
-
-
-    // Attacking
-    [SerializeField] private float timeBetweenAttacks = default;
     private bool alreadyAttacked;
-
-    // States
-    [SerializeField] float sightRange = default;
-    [SerializeField] float attackRange = default;
-    private Collider[] playerInSightRange;
+    private Vector3 player = default;
 
     private void Awake()
     {

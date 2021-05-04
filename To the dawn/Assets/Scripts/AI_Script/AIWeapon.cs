@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using DigitalRuby.LightningBolt;
 
 public class AIWeapon : MonoBehaviour

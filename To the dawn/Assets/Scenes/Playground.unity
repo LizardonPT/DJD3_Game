@@ -832,7 +832,7 @@ MonoBehaviour:
   checkpointArea: 15
   timer: 0
   timeBetweenAttacks: 2
-  sightRange: 30
+  sightRange: 20
   attackRange: 10
 --- !u!114 &252211668
 MonoBehaviour:
@@ -3935,11 +3935,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1558749624244763262, guid: 698a61d9754b031468def75a9eb12694, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000020286133
+      value: -0.0000001984685
       objectReference: {fileID: 0}
     - target: {fileID: 1558749624244763262, guid: 698a61d9754b031468def75a9eb12694, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000025450017
+      value: 0.000000024898917
       objectReference: {fileID: 0}
     - target: {fileID: 1558749624244763262, guid: 698a61d9754b031468def75a9eb12694, type: 3}
       propertyPath: m_LocalRotation.w

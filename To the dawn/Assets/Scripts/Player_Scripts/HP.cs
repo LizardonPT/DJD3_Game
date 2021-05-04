@@ -10,6 +10,11 @@ public class HP : MonoBehaviour
     {
         hp -= Mathf.Max(0, modHP - gameObject.GetComponent<Armor>().ArmorReduction(damageType));
 
+        if(gameObject.layer == 9)
+        {
+            // Ui code
+        }
+
         if(hp < 0)
         {
             hp = 0;
