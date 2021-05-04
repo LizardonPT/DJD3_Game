@@ -40,7 +40,7 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         charges = maxCharges;
-        dashChargeText.text = maxCharges.ToString();
+        dashChargeText.text = "Charges: " + maxCharges.ToString();
     }
 
     // Update is called once per frame
@@ -94,7 +94,7 @@ public class ThirdPersonMovement : MonoBehaviour
             dashTimer = 0;
             charges--;
             gameObject.GetComponent<Energy>().UpdateEnergy(energyDash);
-            dashChargeText.text = charges.ToString();
+            dashChargeText.text = "Charges: " + charges.ToString();
         }
         else if (Input.GetButtonDown("Dash") && charges == 0)
         {
@@ -129,7 +129,7 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             charges++;
             timer = 0;
-            dashChargeText.text = charges.ToString();
+            dashChargeText.text = "Charges: " + charges.ToString();
         }
     }
 

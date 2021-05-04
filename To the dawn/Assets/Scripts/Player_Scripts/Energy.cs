@@ -12,7 +12,7 @@ public class Energy : MonoBehaviour
     void Start()
     {
         energy = energyMax;
-        energyText.text = energyMax.ToString();
+        energyText.text = "Energy: " + energyMax.ToString();
     }
 
     void Update()
@@ -36,7 +36,7 @@ public class Energy : MonoBehaviour
             }
             timer = 0;
         }
-        energyText.text = energy.ToString();
+        energyText.text = "Energy: " + energy.ToString();
     }
 
     public void AdrenalineBoost(int extraBoost)

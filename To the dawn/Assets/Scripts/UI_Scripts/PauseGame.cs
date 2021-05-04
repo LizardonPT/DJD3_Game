@@ -11,11 +11,11 @@ public class PauseGame : MonoBehaviour
         // Manages the paused game
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!gameIsPaused)
+            if ((!gameIsPaused) && (Time.timeScale != 0f))
             {
                 Pause();
             }
-            else
+            else if (gameIsPaused)
             {
                 Resume();
             }

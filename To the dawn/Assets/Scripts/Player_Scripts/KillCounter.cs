@@ -25,7 +25,7 @@ public class KillCounter : MonoBehaviour
 
         KillRewards();
 
-        killText.text = killScore.ToString();
+        killText.text = "Kills: " + killScore.ToString();
     }
 
     public void KillUpdate()

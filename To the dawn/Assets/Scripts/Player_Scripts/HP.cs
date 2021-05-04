@@ -1,15 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
 public class HP : MonoBehaviour
 {
     [SerializeField] private int hp;
     [SerializeField] private TextMeshProUGUI hpText = default;
+    [SerializeField] private GameObject deathScreen = default;
     void Awake()
     {
-        if(gameObject.layer == 9) hpText.text = hp.ToString();
+        if(gameObject.layer == 9) hpText.text =  "Health: " + hp.ToString();
     }
 
     public void HPModifier(int modHP, string damageType)
@@ -18,7 +17,7 @@ public class HP : MonoBehaviour
 
         if(gameObject.layer == 9)
         {
-            hpText.text = hp.ToString();
+            hpText.text = "Health: " + hp.ToString();
         }
 
         if(hp <= 0)
@@ -27,7 +26,9 @@ public class HP : MonoBehaviour
 
             if(gameObject.layer == 9)
             {
-                //DeathScreen
+                deathScreen.SetActive(true);
+                Time.timeScale = 0f;
+                Cursor.lockState = CursorLockMode.None;
             }
             else
             {
