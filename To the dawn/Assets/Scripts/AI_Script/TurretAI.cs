@@ -22,6 +22,7 @@ public class TurretAI : MonoBehaviour
         {
             if(timer == 0)
             {
+                transform.LookAt(playerInSightRange[0].transform);
                 player = playerInSightRange[0].transform.position;
             }
 
@@ -29,7 +30,7 @@ public class TurretAI : MonoBehaviour
 
             if(timer >= 0.1f)
             {
-                TurretAiAttack(player);
+                TurretAiAttack();
                 timer = 0;
             }
         }
@@ -39,7 +40,7 @@ public class TurretAI : MonoBehaviour
         }
     }
 
-    private void TurretAiAttack(Vector3 player)
+    private void TurretAiAttack()
     {
         if(!alreadyAttacked)
         {
