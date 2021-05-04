@@ -1,10 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class HP : MonoBehaviour
 {
     [SerializeField] private int hp;
+    [SerializeField] private TextMeshProUGUI hpText = default;
+    void Awake()
+    {
+        if(gameObject.layer == 9) hpText.text = hp.ToString();
+    }
 
     public void HPModifier(int modHP, string damageType)
     {
@@ -12,15 +18,18 @@ public class HP : MonoBehaviour
 
         if(gameObject.layer == 9)
         {
-            // Ui code
+            hpText.text = hp.ToString();
         }
 
-        if(hp < 0)
+        if(hp <= 0)
         {
-            hp = 0;
             Destroy(gameObject);
-            GameObject.Find("Player").GetComponent<KillCounter>().killUpdate();
-
+            
+            if(gameObject.layer == 9)
+            {
+                //DeathScreen
+            }
+            else GameObject.Find("Player").GetComponent<KillCounter>().killUpdate();
 
         }
     }

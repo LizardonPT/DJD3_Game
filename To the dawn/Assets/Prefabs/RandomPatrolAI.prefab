@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 5
+  hpText: {fileID: 0}
 --- !u!114 &8385501556419472323
 MonoBehaviour:
   m_ObjectHideFlags: 0

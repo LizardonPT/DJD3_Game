@@ -647,6 +647,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580482737}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &674543576 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 674543576, guid: 10e5f4f08e08c0640b4d97f1009f8ecc, type: 3}
+  m_PrefabInstance: {fileID: 2689293044186556874}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &753560591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1454,6 +1465,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2689293042504742205, guid: 10e5f4f08e08c0640b4d97f1009f8ecc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -57.099976
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689293042504742205, guid: 10e5f4f08e08c0640b4d97f1009f8ecc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -30.400024
+      objectReference: {fileID: 0}
     - target: {fileID: 2689293043509611095, guid: 10e5f4f08e08c0640b4d97f1009f8ecc, type: 3}
       propertyPath: m_Name
       value: InGameInterface
@@ -1551,6 +1570,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 753560592}
     m_Modifications:
+    - target: {fileID: 5647591634828588138, guid: 0b74b4b0e5cad2340a6aed72328f772b, type: 3}
+      propertyPath: path.Array.data[0]
+      value: 
+      objectReference: {fileID: 386829699}
+    - target: {fileID: 5647591634828588138, guid: 0b74b4b0e5cad2340a6aed72328f772b, type: 3}
+      propertyPath: path.Array.data[1]
+      value: 
+      objectReference: {fileID: 275663891}
+    - target: {fileID: 5647591634828588138, guid: 0b74b4b0e5cad2340a6aed72328f772b, type: 3}
+      propertyPath: path.Array.data[2]
+      value: 
+      objectReference: {fileID: 97472000}
     - target: {fileID: 6722444211920431169, guid: 0b74b4b0e5cad2340a6aed72328f772b, type: 3}
       propertyPath: m_Name
       value: SettledPatrolAI
@@ -1858,16 +1889,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4227541064692089248, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.0039644614
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541064692089248, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000001986106
+      value: -0.00000020228207
       objectReference: {fileID: 0}
     - target: {fileID: 4227541064692089248, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000024916744
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541064692089248, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.0039644614
+      value: 0.00000002537735
       objectReference: {fileID: 0}
     - target: {fileID: 4227541064692089248, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1893,6 +1924,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -5.273375e-10
       objectReference: {fileID: 0}
+    - target: {fileID: 8406004042887945270, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: hpText
+      value: 
+      objectReference: {fileID: 674543576}
     - target: {fileID: 8406004042887945276, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: weaponText
       value: 
