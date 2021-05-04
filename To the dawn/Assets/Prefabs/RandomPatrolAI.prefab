@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 8385501556419472326}
   - component: {fileID: 8385501556419472327}
   - component: {fileID: 8385501556419472344}
-  - component: {fileID: 8385501556419472345}
   - component: {fileID: 8385501556419472346}
   - component: {fileID: 8385501556419472324}
   - component: {fileID: 8385501556419472323}
+  - component: {fileID: 849345598}
   m_Layer: 0
   m_Name: RandomPatrolAI
   m_TagString: Untagged
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9014ec0c2b74c5a47bd750c1d2925d44, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -100,31 +100,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &8385501556419472345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8385501556419472347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 680e38673a201ce479653e51506238ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  agent: {fileID: 8385501556419472346}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 256
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 512
-  walkPoint: {x: 50, y: 50, z: 50}
-  walkPointRange: 100
-  timeBetweenAttacks: 1
-  sightRange: 15
-  attackRange: 5
 --- !u!195 &8385501556419472346
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -135,7 +110,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1
-  m_Speed: 8
+  m_Speed: 2
   m_Acceleration: 12
   avoidancePriority: 50
   m_AngularSpeed: 560
@@ -174,3 +149,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   electArmor: 2
   plasmaArmor: 0
+--- !u!114 &849345598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8385501556419472347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 680e38673a201ce479653e51506238ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  agent: {fileID: 8385501556419472346}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 512
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 15
+  timeBetweenAttacks: 2
+  sightRange: 15
+  attackRange: 5

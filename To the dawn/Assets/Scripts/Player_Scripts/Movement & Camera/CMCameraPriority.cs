@@ -6,7 +6,7 @@ public class CMCameraPriority : MonoBehaviour
     //[SerializeField] 
     //private CinemachineFreeLook mainCamera;
     [SerializeField] 
-    private CinemachineFreeLook aimCamera;
+    private CinemachineFreeLook aimCamera = default;
 
     public bool playerAim;
 

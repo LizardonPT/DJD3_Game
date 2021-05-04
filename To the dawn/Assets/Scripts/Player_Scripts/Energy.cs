@@ -7,7 +7,7 @@ public class Energy : MonoBehaviour
     public int energy;
     private float timer;
 
-    [SerializeField] private TextMeshProUGUI energyText;
+    [SerializeField] private TextMeshProUGUI energyText = default;
 
     void Start()
     {

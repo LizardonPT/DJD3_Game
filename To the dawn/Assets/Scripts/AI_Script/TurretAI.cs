@@ -2,10 +2,10 @@
 
 public class TurretAI : MonoBehaviour
 {
-    [SerializeField] private LayerMask whatIsPlayer= default;
-    [SerializeField] private float sightRange;
-    [SerializeField] private float cooldown;
-    [SerializeField] private float timer;
+    [SerializeField] private LayerMask whatIsPlayer = default;
+    [SerializeField] private float sightRange = default;
+    [SerializeField] private float cooldown = default;
+    [SerializeField] private float timer = default;
     private bool alreadyAttacked;
     private Collider[] playerInSightRange;
     private Vector3 player;

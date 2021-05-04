@@ -3,11 +3,11 @@ using DigitalRuby.LightningBolt;
 
 public class AIWeapon : MonoBehaviour
 {
-    [SerializeField] private int damage;
-    [SerializeField] private Transform firePoint;
-    [SerializeField] private LineRenderer lineRend;
-    [SerializeField] private GameObject thunder;
-    [SerializeField] private string damageType;
+    [SerializeField] private int damage = default;
+    [SerializeField] private Transform firePoint = default;
+    [SerializeField] private LineRenderer lineRend = default;
+    [SerializeField] private GameObject thunder = default;
+    [SerializeField] private string damageType = default;
 
     public void Fire(Vector3 player)
     {

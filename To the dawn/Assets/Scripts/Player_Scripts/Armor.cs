@@ -2,8 +2,8 @@
 
 public class Armor : MonoBehaviour
 {
-    [SerializeField] private int electArmor;
-    [SerializeField] private int plasmaArmor;
+    [SerializeField] private int electArmor = default;
+    [SerializeField] private int plasmaArmor= default;
     public int ArmorReduction(string damageType)
     {
         if(damageType == "electric") return electArmor;

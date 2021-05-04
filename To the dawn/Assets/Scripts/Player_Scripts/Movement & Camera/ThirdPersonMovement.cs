@@ -3,10 +3,10 @@ using TMPro;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
-    [SerializeField] private Animator interfaceAnim;
-    [SerializeField] private TextMeshProUGUI dashChargeText;
-    [SerializeField] private CharacterController controller;
-    [SerializeField] private Transform cam;
+    [SerializeField] private Animator interfaceAnim = default;
+    [SerializeField] private TextMeshProUGUI dashChargeText = default;
+    [SerializeField] private CharacterController controller = default;
+    [SerializeField] private Transform cam = default;
 
     [SerializeField] private float speed = 6f;
     [SerializeField] private float gravity = -18.81f;
@@ -14,10 +14,10 @@ public class ThirdPersonMovement : MonoBehaviour
 
     [SerializeField] private float turnSmoothTime = 0.1f;
 
-    [SerializeField] private Transform groundCheck;
+    [SerializeField] private Transform groundCheck = default;
     [SerializeField] private float groundDistance = 0.4f;
-    [SerializeField] private LayerMask groundMask;
-    [SerializeField] private int maxCharges;
+    [SerializeField] private LayerMask groundMask = default;
+    [SerializeField] private int maxCharges = default;
     [SerializeField] private int energyDash = 10;
 
 

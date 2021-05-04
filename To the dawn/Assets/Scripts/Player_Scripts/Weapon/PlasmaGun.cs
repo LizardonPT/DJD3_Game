@@ -5,8 +5,8 @@ public class PlasmaGun : MonoBehaviour
     [SerializeField] private float fireRate = 1f;
     [SerializeField] private int damage = 3;
     [SerializeField] private int useEnergyPerShoot = 2;
-    [SerializeField] private Transform firePoint;
-    [SerializeField] private LineRenderer lineRend;
+    [SerializeField] private Transform firePoint = default;
+    [SerializeField] private LineRenderer lineRend = default;
 
     private float timer;
 

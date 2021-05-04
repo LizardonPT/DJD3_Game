@@ -5,12 +5,12 @@ public class Swap : MonoBehaviour
 {
     [SerializeField] private float swapCooldown = 2f;
 
-    [SerializeField] private PlasmaGun plGun;
-    [SerializeField] private ElectricGun elGun;
+    [SerializeField] private PlasmaGun plGun = default;
+    [SerializeField] private ElectricGun elGun = default;
     [SerializeField] private int energySwap = 25;
 
-    [SerializeField] private TextMeshProUGUI weaponText;
-    [SerializeField] private Animator interfaceAnim;
+    [SerializeField] private TextMeshProUGUI weaponText = default;
+    [SerializeField] private Animator interfaceAnim = default;
     private float timer;
 
     void Update()

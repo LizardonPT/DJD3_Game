@@ -3,12 +3,12 @@ using TMPro;
 
 public class KillCounter : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI killText;
+    [SerializeField] private TextMeshProUGUI killText = default;
 
     public int killScore = 0;
 
     private float timer = 0;
-    [SerializeField] private float maxTimer;
+    [SerializeField] private float maxTimer = default;
 
     // Update is called once per frame
     void Update()

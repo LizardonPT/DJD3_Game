@@ -4,10 +4,10 @@ using DigitalRuby.LightningBolt;
 public class ElectricGun : MonoBehaviour
 {
     [SerializeField] private float fireRate = 0.5f;
-    [SerializeField] private GameObject thunder;
+    [SerializeField] private GameObject thunder = default;
     [SerializeField] private int damage = 2;
     [SerializeField] private int useEnergyPerShoot = 1;
-    [SerializeField] private Transform firePoint;
+    [SerializeField] private Transform firePoint = default;
 
     private float timer;
 
