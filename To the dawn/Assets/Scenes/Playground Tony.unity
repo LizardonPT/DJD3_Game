@@ -2048,30 +2048,6 @@ PrefabInstance:
       propertyPath: killText
       value: 
       objectReference: {fileID: 1185000298}
-    - target: {fileID: 4227541064159099678, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_YDamping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541064159099678, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_XDamping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541064159099678, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_ZDamping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541064204244178, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_XDamping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541064204244178, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_YDamping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541064204244178, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_ZDamping
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4227541064267468560, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2133,32 +2109,32 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4227541064692089248, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.003963873
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541064692089248, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000019857553
+      value: -0.017316673
       objectReference: {fileID: 0}
     - target: {fileID: 4227541064692089248, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000024912346
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541064692089248, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.0039644614
+      value: 0.0021724673
       objectReference: {fileID: 0}
     - target: {fileID: 4227541064692089248, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99999213
+      value: 0.9998399
       objectReference: {fileID: 0}
     - target: {fileID: 4227541064692089248, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.20939463
       objectReference: {fileID: 0}
     - target: {fileID: 4227541064692089248, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.00046928006
       objectReference: {fileID: 0}
     - target: {fileID: 4227541064692089248, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.0036242276
       objectReference: {fileID: 0}
     - target: {fileID: 4227541064940835106, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalRotation.y
@@ -2167,82 +2143,6 @@ PrefabInstance:
     - target: {fileID: 4227541064940835106, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.0000000016320916
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541065089942983, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_RecenterToTargetHeading.m_enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541065089942983, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_RecenterToTargetHeading.m_RecenteringTime
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541065089942983, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_RecenterToTargetHeading.m_WaitTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541065089942983, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_YAxisRecentering.m_enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541065089942983, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_YAxisRecentering.m_WaitTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541065089942983, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_YAxisRecentering.m_RecenteringTime
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541065089942983, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_StandbyUpdate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541065204790005, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_XDamping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541065204790005, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_YDamping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541065204790005, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_ZDamping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541065739798224, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_XDamping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541065739798224, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_YDamping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541065739798224, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_ZDamping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541065834311846, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_XDamping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541065834311846, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_YDamping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541065834311846, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_ZDamping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541065879109872, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_XDamping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541065879109872, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_YDamping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541065879109872, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_ZDamping
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8406004042887945270, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: hpText
