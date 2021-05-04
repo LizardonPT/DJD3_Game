@@ -19,6 +19,9 @@ public class HP : MonoBehaviour
         {
             hp = 0;
             Destroy(gameObject);
+            GameObject.Find("Player").GetComponent<KillCounter>().killUpdate();
+
+
         }
     }
 }
