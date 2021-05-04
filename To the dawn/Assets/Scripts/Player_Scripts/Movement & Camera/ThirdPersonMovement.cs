@@ -118,7 +118,7 @@ public class ThirdPersonMovement : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
         if(!isGrounded && velocity.y < 0)
         {
-            velocity.y = -4f; // Descend accel
+            velocity.y = -5f; // Descend accel
         }
 
         if(charges == maxCharges)

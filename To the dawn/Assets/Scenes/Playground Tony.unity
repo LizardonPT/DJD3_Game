@@ -365,14 +365,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 281438159}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 256
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 512
-  path: []
-  checkpointArea: 10
   timer: 0
   timeBetweenAttacks: 1
   sightRange: 15
@@ -1221,26 +1216,6 @@ NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 6722444211920431168, guid: 0b74b4b0e5cad2340a6aed72328f772b, type: 3}
   m_PrefabInstance: {fileID: 2960450830486985497}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1725565535 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4227541064267468560, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-  m_PrefabInstance: {fileID: 8406004042306772303}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1725565536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1725565535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd52de7bd219a91409c33a8cd108470f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  killText: {fileID: 1185000298}
-  killScore: 0
-  maxTimer: 5
 --- !u!1 &1732262271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,7 +1418,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2047119438}
-  m_LocalRotation: {x: 0.06433938, y: 0.000000008585365, z: -5.535239e-10, w: 0.9979281}
+  m_LocalRotation: {x: 0.06433938, y: -0.000000008585365, z: 5.535239e-10, w: 0.9979281}
   m_LocalPosition: {x: 0.5, y: 2.55, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1470,7 +1445,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 2
-    m_Time: 0.3
+    m_Time: 0.1
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -2069,10 +2044,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3389790729386713344, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+    - target: {fileID: 1725565536, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: killText
       value: 
       objectReference: {fileID: 1185000298}
+    - target: {fileID: 4227541064159099678, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_YDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541064159099678, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_XDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541064159099678, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_ZDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541064204244178, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_XDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541064204244178, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_YDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541064204244178, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_ZDamping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4227541064267468560, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2134,16 +2133,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4227541064692089248, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.0039644614
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541064692089248, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000020228414
+      value: -0.00000019857553
       objectReference: {fileID: 0}
     - target: {fileID: 4227541064692089248, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00000002537761
+      value: 0.000000024912346
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541064692089248, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.0039644614
       objectReference: {fileID: 0}
     - target: {fileID: 4227541064692089248, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2163,11 +2162,87 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4227541064940835106, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000012604566
+      value: -0.000000012604566
       objectReference: {fileID: 0}
     - target: {fileID: 4227541064940835106, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000016320916
+      value: 0.0000000016320916
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541065089942983, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_RecenterToTargetHeading.m_enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541065089942983, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_RecenterToTargetHeading.m_RecenteringTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541065089942983, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_RecenterToTargetHeading.m_WaitTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541065089942983, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_YAxisRecentering.m_enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541065089942983, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_YAxisRecentering.m_WaitTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541065089942983, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_YAxisRecentering.m_RecenteringTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541065089942983, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_StandbyUpdate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541065204790005, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_XDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541065204790005, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_YDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541065204790005, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_ZDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541065739798224, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_XDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541065739798224, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_YDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541065739798224, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_ZDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541065834311846, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_XDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541065834311846, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_YDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541065834311846, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_ZDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541065879109872, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_XDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541065879109872, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_YDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541065879109872, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_ZDamping
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8406004042887945270, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: hpText
@@ -2185,8 +2260,7 @@ PrefabInstance:
       propertyPath: energyText
       value: 
       objectReference: {fileID: 863812796}
-    m_RemovedComponents:
-    - {fileID: 3389790729386713344, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
 --- !u!4 &8440570720406040188 stripped
 Transform:
