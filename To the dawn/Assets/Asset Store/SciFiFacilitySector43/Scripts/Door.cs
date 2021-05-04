@@ -26,14 +26,14 @@ public class Door : MonoBehaviour {
 	}
 
     public void openDoor(Collider c) {
-        if (c.tag.Equals("GameController")) {
+        if (c.tag.Equals("Player")) {
             audioSource.Play();
             animator.SetTrigger(trDoorOpen);
 
         }
     }
     public void closeDoor(Collider c) {
-        if (c.tag.Equals("GameController")) {
+        if (c.tag.Equals("Player")) {
             audioSource.Play();
             animator.SetTrigger(trDoorClose);
         }
