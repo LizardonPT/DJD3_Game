@@ -23,31 +23,34 @@ public class PlasmaGun : MonoBehaviour
 
     private void FireGun()
     {
-        Ray ray = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
-        RaycastHit hitInfo;
-        Vector3 direction;
-        LineRenderer plasmalr;
-
-        //Draw line
-        //LineRenderer plasmalr = plasma.GetComponent<LineRenderer>();
-        if (Physics.Raycast(ray,out hitInfo, 100))
+        if(gameObject.GetComponent<Energy>().energy - useEnergyPerShoot > 0)
         {
-            direction = (hitInfo.point - firePoint.position).normalized;
-            plasmalr = Instantiate(lineRend, firePoint.position, Quaternion.LookRotation(direction));
-            plasmalr.SetPosition(1, new Vector3(0,0,hitInfo.distance));
+            Ray ray = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
+            RaycastHit hitInfo;
+            Vector3 direction;
+            LineRenderer plasmalr;
 
-            HP hp = hitInfo.collider.gameObject.GetComponent<HP>();
-            if(hp)
+            //Draw line
+            //LineRenderer plasmalr = plasma.GetComponent<LineRenderer>();
+            if (Physics.Raycast(ray,out hitInfo, 100))
             {
-                hp.HPModifier(damage, "plasma");
-            }
-        }
-        else{
-            plasmalr = Instantiate(lineRend, firePoint.position, Quaternion.LookRotation(ray.direction));
-            plasmalr.SetPosition(1, new Vector3(0,0,500));
-        }
+                direction = (hitInfo.point - firePoint.position).normalized;
+                plasmalr = Instantiate(lineRend, firePoint.position, Quaternion.LookRotation(direction));
+                plasmalr.SetPosition(1, new Vector3(0,0,hitInfo.distance));
 
-        Destroy(plasmalr.gameObject, 0.3f);
-        gameObject.GetComponent<Energy>().UpdateEnergy(useEnergyPerShoot);
+                HP hp = hitInfo.collider.gameObject.GetComponent<HP>();
+                if(hp)
+                {
+                    hp.HPModifier(damage, "plasma");
+                }
+            }
+            else{
+                plasmalr = Instantiate(lineRend, firePoint.position, Quaternion.LookRotation(ray.direction));
+                plasmalr.SetPosition(1, new Vector3(0,0,500));
+            }
+
+            Destroy(plasmalr.gameObject, 0.3f);
+            gameObject.GetComponent<Energy>().UpdateEnergy(useEnergyPerShoot);
+        }
     }
 }

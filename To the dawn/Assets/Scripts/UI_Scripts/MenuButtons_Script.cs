@@ -12,7 +12,7 @@ public class MenuButtons_Script : MonoBehaviour
     /// </summary>
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
     public void VisualGame()
     {

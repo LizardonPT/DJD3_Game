@@ -112,7 +112,8 @@ public class FixedPatrolAI : MonoBehaviour
         else NextPatrol();
 
         if(Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
-            Debug.Log("PROBLABLY AN Invalid PatrolPoint");
+        {
+        }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
         // Walkpoint reached

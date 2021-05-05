@@ -24,42 +24,45 @@ public class ElectricGun : MonoBehaviour
 
     private void FireGun()
     {
-        // Create ray from the camera, with the directiom from the gun to 
-        // the end of the ray
-        Ray ray = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
-        Vector3 direction;
-        RaycastHit hitInfo;
-
-        // Creates thunder effect
-        GameObject newthunder;
-
-        // If it hits something ...
-        if (Physics.Raycast(ray,out hitInfo, 100))
+        if(gameObject.GetComponent<Energy>().energy - useEnergyPerShoot > 0)
         {
-            direction = (hitInfo.point - firePoint.position).normalized;
+            // Create ray from the camera, with the directiom from the gun to 
+            // the end of the ray
+            Ray ray = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
+            Vector3 direction;
+            RaycastHit hitInfo;
 
-            newthunder = Instantiate(thunder, firePoint.position, Quaternion.LookRotation(direction));
-            newthunder.GetComponent<LightningBoltScript>().StartPosition = firePoint.position;
-            newthunder.GetComponent<LightningBoltScript>().EndPosition = hitInfo.point;
+            // Creates thunder effect
+            GameObject newthunder;
 
-            HP hp = hitInfo.collider.gameObject.GetComponent<HP>();
-            if(hp)
+            // If it hits something ...
+            if (Physics.Raycast(ray,out hitInfo, 100))
             {
-                hp.HPModifier(damage, "electric");
+                direction = (hitInfo.point - firePoint.position).normalized;
+
+                newthunder = Instantiate(thunder, firePoint.position, Quaternion.LookRotation(direction));
+                newthunder.GetComponent<LightningBoltScript>().StartPosition = firePoint.position;
+                newthunder.GetComponent<LightningBoltScript>().EndPosition = hitInfo.point;
+
+                HP hp = hitInfo.collider.gameObject.GetComponent<HP>();
+                if(hp)
+                {
+                    hp.HPModifier(damage, "electric");
+                }
             }
-        }
-        // If it does not ...
-        else
-        {
-            newthunder = Instantiate(thunder, firePoint.position, Quaternion.LookRotation(ray.direction));
-            newthunder.GetComponent<LightningBoltScript>().StartPosition = firePoint.position;
-            newthunder.GetComponent<LightningBoltScript>().EndPosition = ray.direction * 100;
-        }
+            // If it does not ...
+            else
+            {
+                newthunder = Instantiate(thunder, firePoint.position, Quaternion.LookRotation(ray.direction));
+                newthunder.GetComponent<LightningBoltScript>().StartPosition = firePoint.position;
+                newthunder.GetComponent<LightningBoltScript>().EndPosition = ray.direction * 100;
+            }
 
-        // Removes thunder from the game
-        Destroy(newthunder, 0.1f);
+            // Removes thunder from the game
+            Destroy(newthunder, 0.1f);
 
-        // Removes Energy
-        gameObject.GetComponent<Energy>().UpdateEnergy(useEnergyPerShoot);
+            // Removes Energy
+            gameObject.GetComponent<Energy>().UpdateEnergy(useEnergyPerShoot);
+        }
     }
 }

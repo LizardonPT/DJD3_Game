@@ -26,7 +26,14 @@ public class KillCounter : MonoBehaviour
 
         KillRewards();
 
-        killText.text = "Kills: " + killScore.ToString();
+        if(killScore == 0)
+        {
+            killText.text = "";
+        }
+        else
+        {
+            killText.text = "Kills: " + killScore.ToString();
+        }
     }
 
     public void KillUpdate()
@@ -49,8 +56,7 @@ public class KillCounter : MonoBehaviour
         gameObject.GetComponent<ThirdPersonMovement>().RapidCharge(Mathf.Max(1 - (killScore/2 * 0.1f),0.5f));
         // Augment Speed
         gameObject.GetComponent<ThirdPersonMovement>().speed = 6 + Mathf.Min(killScore/2,6);
-
-        // Every 3 kills, augment energy gain
-        gameObject.GetComponent<Energy>().AdrenalineBoost(Mathf.Min(killScore/3,4));
+        // Augment energy gain
+        gameObject.GetComponent<Energy>().AdrenalineBoost(Mathf.Min(killScore/2,4));
     }
 }

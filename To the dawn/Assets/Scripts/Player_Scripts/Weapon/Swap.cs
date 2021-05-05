@@ -7,7 +7,7 @@ public class Swap : MonoBehaviour
 
     [SerializeField] private PlasmaGun plGun = default;
     [SerializeField] private ElectricGun elGun = default;
-    [SerializeField] private int energySwap = 25;
+    [SerializeField] private int energySwap = 20;
 
     [SerializeField] private TextMeshProUGUI weaponText = default;
     [SerializeField] private Animator interfaceAnim = default;

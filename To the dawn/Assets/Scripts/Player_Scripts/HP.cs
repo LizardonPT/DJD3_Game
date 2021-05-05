@@ -21,6 +21,12 @@ public class HP : MonoBehaviour
             hpText.text = "Health: " + hp.ToString();
         }
 
+        if(gameObject.layer == 10)
+        {
+            GameObject.Find("Player").GetComponent<KillCounter>().
+                KillUpdate();
+        }
+
         if(hp <= 0)
         {
             Destroy(gameObject);

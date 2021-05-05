@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Joao's Tests.unity
     guid: 0e9a959836ef6824ebb5225f7666225c
+  - enabled: 1
+    path: Assets/Scenes/Playground Joao.unity
+    guid: 8fe41a53b80467c4bb3993fc59ae481f
   m_configObjects: {}
