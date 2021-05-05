@@ -1487,7 +1487,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2039896264}
         m_TargetAssemblyTypeName: MenuButtons_Script, Assembly-CSharp
-        m_MethodName: PlayGame
+        m_MethodName: VisualGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
