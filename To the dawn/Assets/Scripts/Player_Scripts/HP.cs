@@ -4,6 +4,7 @@ using TMPro;
 public class HP : MonoBehaviour
 {
     [SerializeField] private int hp;
+    [SerializeField] private int maxHP = 5;
     [SerializeField] private TextMeshProUGUI hpText = default;
     [SerializeField] private GameObject deathScreen = default;
     void Awake()
@@ -35,6 +36,15 @@ public class HP : MonoBehaviour
                 GameObject.Find("Player").GetComponent<KillCounter>().
                     KillUpdate();
             }
+        }
+    }
+
+    public void RegenHP()
+    {
+        if(hp < maxHP)
+        {
+            hp++;
+            hpText.text = "Health: " + hp.ToString();
         }
     }
 }

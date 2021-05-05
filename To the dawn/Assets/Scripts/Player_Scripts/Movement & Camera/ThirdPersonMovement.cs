@@ -30,6 +30,7 @@ public class ThirdPersonMovement : MonoBehaviour
     private float dashTimer;
     private float turnSmoothVelocity;
     private float dashCooldown = 3f;
+    private float tempDashCooldown = 3f;
 
     private Vector3 moveDir;
     private Vector3 velocity;
@@ -125,7 +126,7 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             timer = 0;
         }
-        else if((charges < maxCharges) && (timer>= dashCooldown))
+        else if((charges < maxCharges) && (timer>= tempDashCooldown))
         {
             charges++;
             timer = 0;
@@ -145,5 +146,10 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
         controller.Move(moveDir * speed * Time.deltaTime);
+    }
+
+    public void RapidCharge(float bonus)
+    {
+        tempDashCooldown = dashCooldown * bonus;
     }
 }
