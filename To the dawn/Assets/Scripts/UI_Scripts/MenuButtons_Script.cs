@@ -14,6 +14,10 @@ public class MenuButtons_Script : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+    public void VisualGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 
     /// <summary>
     /// Public method that leaves the application, does not work on the editor.
