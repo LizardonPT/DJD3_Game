@@ -133,7 +133,7 @@ MonoBehaviour:
   firePoint: {fileID: 6605036560069917340}
   lineRend: {fileID: 6827275422727279553, guid: 0cbe28ca8d3fc754980a249ffde7dfd6, type: 3}
   thunder: {fileID: 178460, guid: a84cb58ef7faa67488076810242453b9, type: 3}
-  damageType: empty
+  damageType: electro
 --- !u!114 &377533353660162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +147,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 3
+  maxHP: 5
+  hpText: {fileID: 0}
+  deathScreen: {fileID: 0}
 --- !u!114 &7263296800604207080
 MonoBehaviour:
   m_ObjectHideFlags: 0
