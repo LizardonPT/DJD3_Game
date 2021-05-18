@@ -4,15 +4,16 @@ using TMPro;
 public class KillCounter : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI killText = default;
+    [SerializeField] private float maxTimer = default;
 
     public int killScore = 0;
     private float timer = 0;
     private int confirmScore = 2;
-    [SerializeField] private float maxTimer = default;
-
+    
     // Update is called once per frame
     void Update()
     {
+        // Manages the timer
         if(timer <= 0)
         {
             timer = 0;
@@ -26,10 +27,12 @@ public class KillCounter : MonoBehaviour
 
         KillRewards();
 
+        // Initializes the KillScore interface
         if(killScore == 0)
         {
             killText.text = "";
         }
+        // Updates the KillScore interface
         else
         {
             killText.text = "Kills: " + killScore.ToString();
@@ -39,6 +42,7 @@ public class KillCounter : MonoBehaviour
     public void KillUpdate()
     {
         killScore++;
+        // Resets the timer
         timer = maxTimer;
     }
 
