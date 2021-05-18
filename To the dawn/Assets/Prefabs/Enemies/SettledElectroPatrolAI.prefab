@@ -61,7 +61,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5395539503228019033}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.21, y: 0.91, z: -0.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -170,6 +170,7 @@ MonoBehaviour:
   maxHP: 5
   hpText: {fileID: 0}
   deathScreen: {fileID: 0}
+  FloatingTextPrefab: {fileID: 8351380572959123542, guid: 0884a036710ea2747a72dd89ac414112, type: 3}
 --- !u!114 &5395539503228019009
 MonoBehaviour:
   m_ObjectHideFlags: 0

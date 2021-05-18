@@ -7,24 +7,36 @@ public class HP : MonoBehaviour
     [SerializeField] private int maxHP = 5;
     [SerializeField] private TextMeshProUGUI hpText = default;
     [SerializeField] private GameObject deathScreen = default;
+    [SerializeField] private TextMeshPro FloatingTextPrefab = default;
+    private GameObject player;
+
+    private TextMeshPro dmgText;
     void Awake()
     {
-        if(gameObject.layer == 9) hpText.text =  "Health: " + hp.ToString();
+        if (gameObject.layer == 9) hpText.text = "Health: " + hp.ToString();
+        else player = GameObject.Find("Player");
     }
 
     public void HPModifier(int modHP, string damageType)
     {
-        hp -= Mathf.Max(0, modHP - gameObject.GetComponent<Armor>().ArmorReduction(damageType));
-
-        if(gameObject.layer == 9)
+        int decrease = Mathf.Max(0, modHP - gameObject.GetComponent<Armor>().ArmorReduction(damageType));
+        hp -= decrease;
+        if (gameObject.layer == 9)
         {
             hpText.text = "Health: " + hp.ToString();
+        }
+        else
+        {
+            dmgText = Instantiate(FloatingTextPrefab, transform.position,
+                Quaternion.FromToRotation(transform.position, player.transform.position), transform);
+            //Debug.Log(Quaternion.FromToRotation(transform.position, player.transform.position));
+            dmgText.text = decrease.ToString();
+            Destroy(dmgText, 2f);
         }
 
         if(gameObject.layer == 10)
         {
-            GameObject.Find("Player").GetComponent<KillCounter>().
-                KillUpdate();
+            player.GetComponent<KillCounter>().KillUpdate();
         }
 
         if(hp <= 0)
@@ -39,8 +51,7 @@ public class HP : MonoBehaviour
             }
             else
             {
-                GameObject.Find("Player").GetComponent<KillCounter>().
-                    KillUpdate();
+                player.GetComponent<KillCounter>().KillUpdate();
             }
         }
     }
