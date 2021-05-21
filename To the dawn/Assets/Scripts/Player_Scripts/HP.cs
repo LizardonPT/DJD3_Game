@@ -7,7 +7,7 @@ public class HP : MonoBehaviour
     [SerializeField] private int maxHP = 5;
     [SerializeField] private TextMeshProUGUI hpText = default;
     [SerializeField] private GameObject deathScreen = default;
-    [SerializeField] private TextMeshPro FloatingTextPrefab = default;
+    [SerializeField] private TextMeshPro floatingTextPrefab = default;
     private GameObject player;
 
     private TextMeshPro dmgText;
@@ -34,7 +34,7 @@ public class HP : MonoBehaviour
         else
         {
             // spawns the Text Object
-            dmgText = Instantiate(FloatingTextPrefab, transform.position,
+            dmgText = Instantiate(floatingTextPrefab, transform.position,
                 Quaternion.FromToRotation(transform.position, player.transform.position), transform);
             //Debug.Log(Quaternion.FromToRotation(transform.position, player.transform.position));
             

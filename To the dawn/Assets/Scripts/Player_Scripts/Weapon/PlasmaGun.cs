@@ -32,7 +32,7 @@ public class PlasmaGun : MonoBehaviour
 
             //Draw line
             //LineRenderer plasmalr = plasma.GetComponent<LineRenderer>();
-            if (Physics.Raycast(ray,out hitInfo, 100))
+            if (Physics.Raycast(ray,out hitInfo, 100,~(1 << LayerMask.NameToLayer("isPlayer"))))
             {
                 direction = (hitInfo.point - firePoint.position).normalized;
                 plasmalr = Instantiate(lineRend, firePoint.position, Quaternion.LookRotation(direction));
@@ -46,7 +46,7 @@ public class PlasmaGun : MonoBehaviour
             }
             else{
                 plasmalr = Instantiate(lineRend, firePoint.position, Quaternion.LookRotation(ray.direction));
-                plasmalr.SetPosition(1, new Vector3(0,0,500));
+                plasmalr.SetPosition(1, new Vector3(0,0,100));
             }
 
             Destroy(plasmalr.gameObject, 0.3f);

@@ -36,7 +36,7 @@ public class ElectricGun : MonoBehaviour
             GameObject newthunder;
 
             // If it hits something ...
-            if (Physics.Raycast(ray,out hitInfo, 100))
+            if (Physics.Raycast(ray,out hitInfo, 100,~(1 << LayerMask.NameToLayer("isPlayer"))))
             {
                 direction = (hitInfo.point - firePoint.position).normalized;
 
@@ -56,6 +56,7 @@ public class ElectricGun : MonoBehaviour
                 newthunder = Instantiate(thunder, firePoint.position, Quaternion.LookRotation(ray.direction));
                 newthunder.GetComponent<LightningBoltScript>().StartPosition = firePoint.position;
                 newthunder.GetComponent<LightningBoltScript>().EndPosition = ray.direction * 100;
+                Debug.Log("oof");
             }
 
             // Removes thunder from the game

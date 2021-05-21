@@ -170,7 +170,7 @@ MonoBehaviour:
   maxHP: 5
   hpText: {fileID: 0}
   deathScreen: {fileID: 0}
-  FloatingTextPrefab: {fileID: 8351380572959123542, guid: 0884a036710ea2747a72dd89ac414112, type: 3}
+  floatingTextPrefab: {fileID: 8351380572959123542, guid: 0884a036710ea2747a72dd89ac414112, type: 3}
 --- !u!114 &6722444211920431193
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1405,7 +1405,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5395539503228019015, guid: f9c3aeb2bbf2bcc44b71dcf763b406cd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.21
+      value: 23.2
       objectReference: {fileID: 0}
     - target: {fileID: 5395539503228019015, guid: f9c3aeb2bbf2bcc44b71dcf763b406cd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1413,7 +1413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5395539503228019015, guid: f9c3aeb2bbf2bcc44b71dcf763b406cd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.96
+      value: 13.6
       objectReference: {fileID: 0}
     - target: {fileID: 5395539503228019015, guid: f9c3aeb2bbf2bcc44b71dcf763b406cd, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1976,16 +1976,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4227541064692089248, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.0039644614
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227541064692089248, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000020287872
+      value: -0.00000019860562
       objectReference: {fileID: 0}
     - target: {fileID: 4227541064692089248, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000025452202
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227541064692089248, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.0039644614
+      value: 0.000000024916119
       objectReference: {fileID: 0}
     - target: {fileID: 4227541064692089248, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2019,6 +2019,10 @@ PrefabInstance:
       propertyPath: deathScreen
       value: 
       objectReference: {fileID: 2009122952}
+    - target: {fileID: 8406004042887945270, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
+      propertyPath: floatingTextPrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8406004042887945276, guid: 408d6637d3721ce468c04e9bc606e8a4, type: 3}
       propertyPath: weaponText
       value: 
