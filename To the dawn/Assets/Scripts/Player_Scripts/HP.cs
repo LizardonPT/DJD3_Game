@@ -18,7 +18,7 @@ public class HP : MonoBehaviour
         // If not locates player Gameobject
         else player = GameObject.Find("Player");
     }
-
+    void Start() {}
     public void HPModifier(int modHP, string damageType)
     {
         // Calculates the amount of lost hp and updates it
@@ -46,9 +46,13 @@ public class HP : MonoBehaviour
         }
 
         // Alway updates the kill counter for layer Dummy
-        if(gameObject.layer == 10)
+        if(gameObject.tag == "Switch")
         {
-            player.GetComponent<KillCounter>().KillUpdate();
+            transform.Find("IndicatorOn").gameObject.SetActive(true);
+            transform.Find("IndicatorOff").gameObject.SetActive(false);
+            transform.Find("GameObject").Find("UnlockableDoor").gameObject.GetComponentInChildren<Animator>().SetBool("doorUnlock",true);
+            Destroy(GetComponent<HP>());
+            hp = 1;
         }
 
         // If the hp is less or equal to 0 it dies
