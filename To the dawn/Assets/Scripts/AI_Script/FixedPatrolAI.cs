@@ -130,7 +130,7 @@ public class FixedPatrolAI : MonoBehaviour
 
     private void BaseAiChase()
     {
-        agent.speed = 4;
+        agent.speed = 5;
         agent.SetDestination(playerInSightRange[0].transform.position);
     }
 
