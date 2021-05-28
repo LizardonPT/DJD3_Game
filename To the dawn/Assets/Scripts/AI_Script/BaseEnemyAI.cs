@@ -4,22 +4,19 @@ using UnityEngine.AI;
 public class BaseEnemyAI : MonoBehaviour
 {
     [SerializeField] private Transform player = default;
-    [SerializeField] private NavMeshAgent agent;
     [SerializeField] private LayerMask whatIsGround= default, whatIsPlayer= default;
+    [SerializeField] private int runSpeed = default;
+    private NavMeshAgent agent;
 
-    // Patroling
+    // Wandering Variables
     private bool walkPointSet;
     [SerializeField] private Vector3 walkPoint;
     [SerializeField] private float walkPointRange = default;
 
-    // Attacking
-    [SerializeField] private float timeBetweenAttacks = default;
-    private bool alreadyAttacked;
 
-    // States
+    // Sight Variables
     [SerializeField] float sightRange = default;
-    [SerializeField] float attackRange = default;
-    private bool playerInSightRange, playerInAttackRange;
+    private bool playerInSightRange;
 
     private void Awake()
     {
@@ -30,18 +27,14 @@ public class BaseEnemyAI : MonoBehaviour
     {
         // Checkif the player is in sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        // If the player is neither is sight nor in attack range
-        // AI will patroll
-        if(!playerInSightRange && !playerInAttackRange) BaseAiPatrol();
-        // If player is in sight but not in attack range chase him
-        if(playerInSightRange && !playerInAttackRange) BaseAiChase();
-        // If player is in sight and attack range attack him
-        if(playerInSightRange && playerInAttackRange) BaseAiAttack();
+        // If the player is not in sight, move random
+        if(!playerInSightRange) AIWander();
+        // If player is in sight  run
+        if(playerInSightRange) BaseAiRun();
     }
 
-    private void BaseAiPatrol()
+    private void AIWander()
     {
         // If no walkpoint is not set, define a new one
         if(!walkPointSet) SearchWalkPoint();
@@ -68,34 +61,9 @@ public class BaseEnemyAI : MonoBehaviour
             walkPointSet = true;
     }
 
-    private void BaseAiChase()
+    private void BaseAiRun()
     {
-        agent.SetDestination(player.position);
-    }
-
-    private void BaseAiAttack()
-    {
-        // Make sure enemy doesn't move
-        agent.SetDestination(transform.position);
-
-        transform.LookAt(player);
-
-        if(!alreadyAttacked)
-        {
-            // Attack Code here
-            Debug.Log("A robot has attacked you!"); 
-
-
-
-            //
-
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
-        }
-    }
-
-    private void ResetAttack()
-    {
-        alreadyAttacked = false;
+        // Runs away to the contrary direction of the player
+        agent.Move((transform.position - player.position).normalized* runSpeed * Time.deltaTime);
     }
 }
