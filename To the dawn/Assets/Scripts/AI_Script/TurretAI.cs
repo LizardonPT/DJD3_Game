@@ -3,7 +3,7 @@
 public class TurretAI : MonoBehaviour
 {
     [SerializeField] private LayerMask whatIsPlayer = default;
-    [SerializeField] private float sightRange = default;
+    public float sightRange = default;
     [SerializeField] private float cooldown = default;
     [SerializeField] private float timer = default;
     private bool alreadyAttacked;
@@ -54,5 +54,10 @@ public class TurretAI : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
+    }
+
+    private void UnderAttack()
+    {
+        sightRange *= 2;
     }
 }

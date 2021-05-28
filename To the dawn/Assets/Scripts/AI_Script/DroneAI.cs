@@ -7,17 +7,19 @@ public class DroneAI : MonoBehaviour
     [SerializeField] private LayerMask whatIsPlayer= default;
     [SerializeField] private float timer = default;
     [SerializeField] private float timeBetweenAttacks = default;
-    [SerializeField] float sightRange = default;
+    public float sightRange = default;
     [SerializeField] float attackRange = default;
     private Collider[] playerInSightRange;
     private Collider[] playerInAttackRange;
     private bool alreadyAttacked;
     private bool chaseMode = false;
     private Vector3 player = default;
+    private float defaultSight = default;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        defaultSight = sightRange;
     }
 
     private void FixedUpdate()
@@ -31,6 +33,7 @@ public class DroneAI : MonoBehaviour
         if(playerInSightRange.Length == 0 && playerInAttackRange.Length == 0)
         {
             chaseMode = false;
+            sightRange = defaultSight;
         }
         // If player is in sight but not in attack range chase him
         else if(playerInSightRange.Length > 0 && playerInAttackRange.Length == 0)
@@ -59,7 +62,6 @@ public class DroneAI : MonoBehaviour
                 Vector3.Distance(playerInAttackRange[0].transform.position,
                 transform.position), 1 << LayerMask.NameToLayer("isGround")))
             {
-                chaseMode = true;
 
                 if(timer == 0)
                 {
@@ -69,7 +71,7 @@ public class DroneAI : MonoBehaviour
 
                 timer += Time.deltaTime;
 
-                if(timer >= 0.1f)
+                if(timer >= 0.3f)
                 {
                     BaseAiAttack();
                     timer = 0;
@@ -116,5 +118,10 @@ public class DroneAI : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
+    }
+
+    private void UnderAttack()
+    {
+        sightRange *= 2;
     }
 }

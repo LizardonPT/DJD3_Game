@@ -43,6 +43,11 @@ public class HP : MonoBehaviour
 
             //Destroy the object after 2s
             Destroy(dmgText, 2f);
+            
+            if(gameObject.tag != "Switch")
+            {
+                SendMessage("UnderAttack");
+            }
         }
 
         // Alway updates the kill counter for layer Dummy

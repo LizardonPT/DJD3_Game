@@ -9,8 +9,8 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private Transform cam = default;
 
     public float speed = 6f;
-    [SerializeField] private float gravity = -18.81f;
-    [SerializeField] private float jumpHeight = 1f;
+    [SerializeField] private float gravity = -1000000f;
+    [SerializeField] private float jumpHeight = 2f;
 
     [SerializeField] private float turnSmoothTime = 0.1f;
 
@@ -22,11 +22,9 @@ public class ThirdPersonMovement : MonoBehaviour
 
 
     private bool isGrounded;
-    private bool jump;
 
     private int charges;
     private float timer;
-    private float jumpTimer;
     private float dashTimer;
     private float turnSmoothVelocity;
     private float dashCooldown = 3f;
@@ -52,7 +50,6 @@ public class ThirdPersonMovement : MonoBehaviour
         // Prepare timers for dash
         timer += Time.deltaTime;
         dashTimer += Time.deltaTime;
-        jumpTimer += Time.deltaTime;
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -63,17 +60,6 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             controller.Move(moveDir * (speed*4) * Time.deltaTime);
             velocity.y = 0;
-        }
-        else if(jump)
-        {
-            if(vertical != 0f || horizontal != 0f)
-            {
-                controller.Move(moveDir * (speed*1.2f) * Time.deltaTime);
-            }
-            if(isGrounded && jumpTimer>= 0.1f)
-            {
-                jump = false;
-            }
         }
         // Movement while player is aiming
         else if(gameObject.GetComponent<CMCameraPriority>().playerAim)
@@ -110,17 +96,11 @@ public class ThirdPersonMovement : MonoBehaviour
         if(isGrounded && Input.GetButtonDown("Jump"))
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -1f * gravity);
-            jump = true;
-            jumpTimer = 0;
         }
 
         // Gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
-        if(!isGrounded && velocity.y < 0)
-        {
-            velocity.y = -5f; // Descend accel
-        }
 
         if(charges == maxCharges)
         {

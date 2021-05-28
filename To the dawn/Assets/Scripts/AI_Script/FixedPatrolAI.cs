@@ -9,7 +9,7 @@ public class FixedPatrolAI : MonoBehaviour
     [SerializeField] private float checkpointArea = default;
     [SerializeField] private float timer = default;
     [SerializeField] private float timeBetweenAttacks = default;
-    [SerializeField] float sightRange = default;
+    public float sightRange = default;
     [SerializeField] float attackRange = default;
     private Collider[] playerInSightRange;
     private Collider[] playerInAttackRange;
@@ -151,5 +151,10 @@ public class FixedPatrolAI : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
+    }
+
+    private void UnderAttack()
+    {
+        sightRange *= 2;
     }
 }
