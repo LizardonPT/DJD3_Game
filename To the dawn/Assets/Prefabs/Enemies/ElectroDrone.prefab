@@ -144,9 +144,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 0
   firePoint: {fileID: 6334976599588426356}
   lineRend: {fileID: 6827275422727279553, guid: 0cbe28ca8d3fc754980a249ffde7dfd6, type: 3}
   thunder: {fileID: 178460, guid: a84cb58ef7faa67488076810242453b9, type: 3}
+  explosionelec: {fileID: 0}
+  explosionplasma: {fileID: 0}
   damageType: thunder
 --- !u!114 &6334976600187690093
 MonoBehaviour:
@@ -220,4 +225,5 @@ MonoBehaviour:
   maxHP: 5
   hpText: {fileID: 0}
   deathScreen: {fileID: 0}
-  floatingTextPrefab: {fileID: 8351380572959123542, guid: 0884a036710ea2747a72dd89ac414112, type: 3}
+  dmgTextPrefab: {fileID: 8351380572959123542, guid: 0884a036710ea2747a72dd89ac414112, type: 3}
+  invulnerablePrefab: {fileID: 8351380572959123542, guid: fd09faf80fa28b54bacf61533d5898f9, type: 3}

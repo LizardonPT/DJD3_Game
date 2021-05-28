@@ -7,10 +7,11 @@ public class HP : MonoBehaviour
     [SerializeField] private int maxHP = 5;
     [SerializeField] private TextMeshProUGUI hpText = default;
     [SerializeField] private GameObject deathScreen = default;
-    [SerializeField] private TextMeshPro floatingTextPrefab = default;
+    [SerializeField] private TextMeshPro dmgTextPrefab = default;
+    [SerializeField] private TextMeshPro invulnerablePrefab = default;
     private GameObject player;
 
-    private TextMeshPro dmgText;
+    private TextMeshPro floatingText;
     void Awake()
     {
         // If its the player initializes hp interface
@@ -33,16 +34,26 @@ public class HP : MonoBehaviour
         // If not spawns the damage text on the enemy location
         else
         {
-            // spawns the Text Object
-            dmgText = Instantiate(floatingTextPrefab, transform.position,
-                Quaternion.FromToRotation(transform.position, player.transform.position), transform);
-            //Debug.Log(Quaternion.FromToRotation(transform.position, player.transform.position));
+            // If it is damaged
+            if (decrease > 0)
+            {// Spawns the Text Object
+                floatingText = Instantiate(dmgTextPrefab, transform.position,
+                    Quaternion.FromToRotation(transform.position, player.transform.position), transform);
+                //Debug.Log(Quaternion.FromToRotation(transform.position, player.transform.position));
+
+                // Updates the text according to the value the enemy lost
+                floatingText.text = decrease.ToString();
+            }
+            // if it is not damaged
+            else
+            { // Spawns the invunerable Text Object
+                floatingText = Instantiate(invulnerablePrefab, transform.position,
+                    Quaternion.FromToRotation(transform.position, player.transform.position), transform);
+            }
             
-            // Updates the text according to the value the enemy lost
-            dmgText.text = decrease.ToString();
 
             //Destroy the object after 2s
-            Destroy(dmgText, 2f);
+            Destroy(floatingText, 2f);
             
             if(gameObject.tag != "Switch")
             {
