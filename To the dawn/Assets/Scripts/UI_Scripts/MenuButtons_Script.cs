@@ -12,11 +12,11 @@ public class MenuButtons_Script : MonoBehaviour
     /// </summary>
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
-    }
-    public void VisualGame()
-    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    public void PlayGround()
+    {
+        SceneManager.LoadScene("PlayGround Joao");
     }
 
     /// <summary>

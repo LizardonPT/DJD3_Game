@@ -11,9 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: f7a0370abec5e3f4ab051e51cfa74795
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Joao's Tests.unity
-    guid: 0e9a959836ef6824ebb5225f7666225c
+    path: Assets/Scenes/Level1.unity
+    guid: 75c9da3f8a320ef4188bcc4b989a80a1
   - enabled: 1
     path: Assets/Scenes/Playground Joao.unity
     guid: 8fe41a53b80467c4bb3993fc59ae481f
