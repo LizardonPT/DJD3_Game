@@ -4,7 +4,7 @@ using TMPro;
 public class Energy : MonoBehaviour
 {
     [SerializeField] private int energyMax = 100;
-    [SerializeField] private TextMeshProUGUI energyText;
+    [SerializeField] private TextMeshProUGUI energyText = default;
     public int energy;
     private float timer;
     private int boost;

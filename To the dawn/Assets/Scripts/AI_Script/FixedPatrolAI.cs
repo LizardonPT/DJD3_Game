@@ -5,7 +5,7 @@ public class FixedPatrolAI : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent = default;
     [SerializeField] private LayerMask whatIsGround= default, whatIsPlayer= default;
-    [SerializeField] private Transform[] path;
+    [SerializeField] private Transform[] path = default;
     [SerializeField] private float checkpointArea = default;
     [SerializeField] private float timer = default;
     [SerializeField] private float timeBetweenAttacks = default;

@@ -26,12 +26,12 @@ public class HP : MonoBehaviour
         int decrease = Mathf.Max(0, modHP - gameObject.GetComponent<Armor>().ArmorReduction(damageType));
         hp -= decrease;
         
-        // If its the player updates the interface
+        // If its the player 
         if (gameObject.layer == 9)
-        {
+        { // Updates the interface
             hpText.text = "Health: " + hp.ToString();
         }
-        // If not spawns the damage text on the enemy location
+        // If not a pop up appears on the target location
         else
         {
             // If it is damaged
@@ -39,12 +39,19 @@ public class HP : MonoBehaviour
             {// Spawns the Text Object
                 floatingText = Instantiate(dmgTextPrefab, transform.position,
                     Quaternion.FromToRotation(transform.position, player.transform.position), transform);
-                //Debug.Log(Quaternion.FromToRotation(transform.position, player.transform.position));
 
                 // Updates the text according to the value the enemy lost
                 floatingText.text = decrease.ToString();
             }
-            // if it is not damaged
+            // If the target is a switch
+            else if(gameObject.tag == "Switch")
+            {
+                // Some animation or something
+                Debug.Log("TRiiger tag activated");
+                floatingText = Instantiate(dmgTextPrefab, transform.position,
+                    Quaternion.FromToRotation(transform.position, player.transform.position), transform);
+            }
+            // If it is not damaged
             else
             { // Spawns the invunerable Text Object
                 floatingText = Instantiate(invulnerablePrefab, transform.position,
