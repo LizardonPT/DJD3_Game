@@ -24,7 +24,7 @@ public class AIWeapon : MonoBehaviour
 
             //Draw line
             //LineRenderer plasmalr = plasma.GetComponent<LineRenderer>();
-            if (Physics.Raycast(ray,out hitInfo, 100))
+            if (Physics.Raycast(ray,out hitInfo, 100, LayerMask.GetMask("isPlayer", "isGround", "Default")))
             {
                 plasmalr = Instantiate(lineRend, firePoint.position, Quaternion.LookRotation(ray.direction.normalized));
                 plasmalr.SetPosition(1, new Vector3(0,0,hitInfo.distance));
@@ -48,7 +48,7 @@ public class AIWeapon : MonoBehaviour
             GameObject newthunder;
 
             // If it hits something ...
-            if (Physics.Raycast(ray,out hitInfo, 100))
+            if (Physics.Raycast(ray,out hitInfo, 100, LayerMask.GetMask("isPlayer", "isGround", "Default")))
             {
                 newthunder = Instantiate(thunder, firePoint.position, Quaternion.LookRotation(ray.direction.normalized));
                 newthunder.GetComponent<LightningBoltScript>().StartPosition = firePoint.position;
@@ -81,7 +81,7 @@ public class AIWeapon : MonoBehaviour
 
             //Draw line
             //LineRenderer plasmalr = plasma.GetComponent<LineRenderer>();
-            if (Physics.Raycast(ray,out hitInfo, 100))
+            if (Physics.Raycast(ray,out hitInfo, 100, LayerMask.GetMask("isPlayer", "isGround", "Default")))
             {
                 plasmalr = Instantiate(lineRend, firePoint.position, Quaternion.LookRotation(ray.direction.normalized));
                 plasmalr.SetPosition(1, new Vector3(0,0,hitInfo.distance));
@@ -109,7 +109,7 @@ public class AIWeapon : MonoBehaviour
             GameObject newthunder;
 
             // If it hits something ...
-            if (Physics.Raycast(ray,out hitInfo, 100))
+            if (Physics.Raycast(ray,out hitInfo, 100, LayerMask.GetMask("isPlayer", "isGround", "Default")))
             {
                 newthunder = Instantiate(thunder, firePoint.position, Quaternion.LookRotation(ray.direction.normalized));
                 newthunder.GetComponent<LightningBoltScript>().StartPosition = firePoint.position;
@@ -131,5 +131,37 @@ public class AIWeapon : MonoBehaviour
 
             Destroy(newthunder, 0.1f);
         }
+    }
+
+    public void Fire(Vector3 player, string newDamage)
+    {
+        Ray ray = new Ray(gameObject.transform.position, player - gameObject.transform.position);
+        RaycastHit hitInfo;
+
+        // Creates thunder effect
+        GameObject newthunder;
+
+        // If it hits something ...
+        if (Physics.Raycast(ray, out hitInfo, 100, LayerMask.GetMask("isPlayer", "isGround", "Default")))
+        {
+            newthunder = Instantiate(thunder, firePoint.position, Quaternion.LookRotation(ray.direction.normalized));
+            newthunder.GetComponent<LightningBoltScript>().StartPosition = firePoint.position;
+            newthunder.GetComponent<LightningBoltScript>().EndPosition = hitInfo.point;
+
+            HP hp = hitInfo.collider.gameObject.GetComponent<HP>();
+            if (hp)
+            {
+                hp.HPModifier(5, "electric");
+            }
+        }
+        // If it does not ...
+        else
+        {
+            newthunder = Instantiate(thunder, firePoint.position, Quaternion.LookRotation(ray.direction));
+            newthunder.GetComponent<LightningBoltScript>().StartPosition = firePoint.position;
+            newthunder.GetComponent<LightningBoltScript>().EndPosition = ray.direction * 100;
+        }
+
+        Destroy(newthunder, 0.1f);
     }
 }
