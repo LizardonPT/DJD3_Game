@@ -8,8 +8,15 @@ public class ElectricGun : MonoBehaviour
     [SerializeField] private int damage = 2;
     [SerializeField] private int useEnergyPerShoot = 1;
     [SerializeField] private Transform firePoint = default;
+    [SerializeField] private AudioClip electricSound;
+    private AudioSource myAudio;
 
     private float timer;
+
+    private void Start()
+    {
+        myAudio = this.GetComponent<AudioSource>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -19,6 +26,8 @@ public class ElectricGun : MonoBehaviour
         {
             timer = 0f;
             FireGun();
+            myAudio.clip = electricSound;
+            myAudio.Play();
         }
     }
 

@@ -20,6 +20,9 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private int maxCharges = default;
     [SerializeField] private int energyDash = 10;
 
+    [SerializeField] private AudioClip dashSound;
+    private AudioSource myAudio;
+
 
     private bool isGrounded;
 
@@ -40,6 +43,8 @@ public class ThirdPersonMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         charges = maxCharges;
         dashChargeText.text = "Charges: " + maxCharges.ToString();
+
+        myAudio = this.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -82,6 +87,8 @@ public class ThirdPersonMovement : MonoBehaviour
             charges--;
             gameObject.GetComponent<Energy>().UpdateEnergy(energyDash);
             dashChargeText.text = "Charges: " + charges.ToString();
+            myAudio.clip = dashSound;
+            myAudio.Play();
         }
         else if (Input.GetButtonDown("Dash") && charges == 0)
         {

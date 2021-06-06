@@ -7,8 +7,15 @@ public class PlasmaGun : MonoBehaviour
     [SerializeField] private int useEnergyPerShoot = 2;
     [SerializeField] private Transform firePoint = default;
     [SerializeField] private LineRenderer lineRend = default;
+    [SerializeField] private AudioClip plasmaSound;
+    private AudioSource myAudio;
 
     private float timer;
+
+    private void Start()
+    {
+        myAudio = this.GetComponent<AudioSource>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -18,6 +25,8 @@ public class PlasmaGun : MonoBehaviour
         {
             timer = 0f;
             FireGun();
+            myAudio.clip = plasmaSound;
+            myAudio.Play();
         }
     }
 
