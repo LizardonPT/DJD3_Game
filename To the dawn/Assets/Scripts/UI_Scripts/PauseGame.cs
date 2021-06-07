@@ -5,6 +5,7 @@ public class PauseGame : MonoBehaviour
 {
     [SerializeField] private static bool gameIsPaused = false;
     [SerializeField] private GameObject pauseMenuUI = default;
+    [SerializeField] private GameObject settingsUI = default;
 
     private void Update()
     {
@@ -15,7 +16,12 @@ public class PauseGame : MonoBehaviour
             {
                 Pause();
             }
-            else if (gameIsPaused)
+            else if (gameIsPaused && settingsUI.activeSelf)
+            {
+                settingsUI.SetActive(false);
+                pauseMenuUI.SetActive(true);
+            }
+            else
             {
                 Resume();
             }
