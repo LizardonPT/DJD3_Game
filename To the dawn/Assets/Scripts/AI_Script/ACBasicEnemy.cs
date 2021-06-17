@@ -17,12 +17,12 @@ public class ACBasicEnemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Animation Controller
-        if (agent.velocity.magnitude > 0)
+        //If he is moving
+        if (agent.velocity.magnitude > 0.1)
         {
             anim.SetBool("Fixed", false);
         }
-        else
+        else //if he is not moving
         {
             anim.SetBool("Fixed", true);
         }

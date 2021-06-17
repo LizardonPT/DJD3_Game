@@ -66,6 +66,7 @@ GameObject:
   - component: {fileID: 6722444211920431193}
   - component: {fileID: 5647591634828588138}
   - component: {fileID: 8385501555780629340}
+  - component: {fileID: 1049189173}
   m_Layer: 0
   m_Name: PlasmaEnemy
   m_TagString: Untagged
@@ -218,22 +219,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d3fdf64f911954a8046878560f4d60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 6722444211920431168}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 512
-  path:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  checkpointArea: 15
+  path: []
+  checkpointArea: 5
   timer: 0
   timeBetweenAttacks: 1
-  sightRange: 20
   attackRange: 10
+  avatar: {fileID: 4121515234990789064}
+  sightRange: 20
 --- !u!114 &8385501555780629340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,13 +247,26 @@ MonoBehaviour:
   damage: 1
   whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   firePoint: {fileID: 658914841}
   lineRend: {fileID: 6827275422727279553, guid: 0cbe28ca8d3fc754980a249ffde7dfd6, type: 3}
   thunder: {fileID: 178460, guid: a84cb58ef7faa67488076810242453b9, type: 3}
   explosionelec: {fileID: 0}
   explosionplasma: {fileID: 0}
   damageType: plasma
+--- !u!114 &1049189173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6722444211920431169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fcb6c71fc15b9b4d91703647ff64579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  avatar: {fileID: 4121515234990789064}
 --- !u!1001 &3887725322131582105
 PrefabInstance:
   m_ObjectHideFlags: 0

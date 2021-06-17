@@ -30,6 +30,25 @@ Transform:
   m_Father: {fileID: 5395539503228019015}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2905134176326560920
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2341199590865802887}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: a6ffe6a7d7394eb43b6d85ccd0cdc206, type: 3}
+  m_Controller: {fileID: 9100000, guid: 45d5b1ffdf2cb6e4fbeeed113e05feca, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5395539503228019033
 GameObject:
   m_ObjectHideFlags: 0
@@ -47,8 +66,9 @@ GameObject:
   - component: {fileID: 5395539503228019009}
   - component: {fileID: 6470093047550410098}
   - component: {fileID: 7202782816358218308}
+  - component: {fileID: 465234226802607252}
   m_Layer: 0
-  m_Name: SettledElectroPatrolAI
+  m_Name: EletroEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,6 +86,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1705217136866998017}
+  - {fileID: 3113759975162825789}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -84,7 +105,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5395539503228019033}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -198,22 +219,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d3fdf64f911954a8046878560f4d60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 5395539503228019032}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 512
-  path:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  checkpointArea: 15
+  path: []
+  checkpointArea: 5
   timer: 0
   timeBetweenAttacks: 1
-  sightRange: 20
   attackRange: 10
+  avatar: {fileID: 2341199590865802887}
+  sightRange: 20
 --- !u!114 &7202782816358218308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,3 +254,83 @@ MonoBehaviour:
   explosionelec: {fileID: 0}
   explosionplasma: {fileID: 0}
   damageType: electro
+--- !u!114 &465234226802607252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5395539503228019033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fcb6c71fc15b9b4d91703647ff64579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  avatar: {fileID: 2341199590865802887}
+--- !u!1001 &3223721149952535510
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5395539503228019015}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 11bcfe4da9bbdc24ca28a26acd943c35, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11bcfe4da9bbdc24ca28a26acd943c35, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.961
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11bcfe4da9bbdc24ca28a26acd943c35, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11bcfe4da9bbdc24ca28a26acd943c35, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11bcfe4da9bbdc24ca28a26acd943c35, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11bcfe4da9bbdc24ca28a26acd943c35, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11bcfe4da9bbdc24ca28a26acd943c35, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11bcfe4da9bbdc24ca28a26acd943c35, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11bcfe4da9bbdc24ca28a26acd943c35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11bcfe4da9bbdc24ca28a26acd943c35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 11bcfe4da9bbdc24ca28a26acd943c35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 11bcfe4da9bbdc24ca28a26acd943c35, type: 3}
+      propertyPath: m_Name
+      value: Soldier
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 11bcfe4da9bbdc24ca28a26acd943c35, type: 3}
+--- !u!1 &2341199590865802887 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 11bcfe4da9bbdc24ca28a26acd943c35, type: 3}
+  m_PrefabInstance: {fileID: 3223721149952535510}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3113759975162825789 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 11bcfe4da9bbdc24ca28a26acd943c35, type: 3}
+  m_PrefabInstance: {fileID: 3223721149952535510}
+  m_PrefabAsset: {fileID: 0}
