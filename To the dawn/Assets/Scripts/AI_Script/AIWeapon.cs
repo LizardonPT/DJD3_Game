@@ -12,13 +12,15 @@ public class AIWeapon : MonoBehaviour
     [SerializeField] private GameObject explosionplasma = default;
     [SerializeField] private string damageType = default;
     private Collider[] playerInExplosion;
+    
+
 
     public void Fire(Vector3 player)
     {
         Ray ray = new Ray(gameObject.transform.position, player - gameObject.transform.position);
         RaycastHit hitInfo;
 
-        if(damageType == "plasma")
+        if (damageType == "plasma")
         {
             LineRenderer plasmalr;
 
@@ -33,6 +35,7 @@ public class AIWeapon : MonoBehaviour
                 if(hp)
                 {
                     hp.HPModifier(damage, "plasma");
+                    Debug.Log("lesshp");
                 }
             }
             else{

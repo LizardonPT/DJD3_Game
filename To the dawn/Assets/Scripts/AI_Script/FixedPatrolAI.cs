@@ -3,14 +3,14 @@ using UnityEngine.AI;
 
 public class FixedPatrolAI : MonoBehaviour
 {
-    [SerializeField] private NavMeshAgent agent = default;
     [SerializeField] private LayerMask whatIsGround= default, whatIsPlayer= default;
     [SerializeField] private Transform[] path = default;
     [SerializeField] private float checkpointArea = default;
     [SerializeField] private float timer = default;
     [SerializeField] private float timeBetweenAttacks = default;
-    public float sightRange = default;
     [SerializeField] float attackRange = default;
+    [SerializeField] private GameObject avatar = default;
+    public float sightRange = default;
     private Collider[] playerInSightRange;
     private Collider[] playerInAttackRange;
     private Vector3 walkPoint;
@@ -19,10 +19,15 @@ public class FixedPatrolAI : MonoBehaviour
     private bool alreadyAttacked;
     private bool chaseMode = false;
     private Vector3 player = default;
+    private NavMeshAgent agent;
+    private float baseSpeed;
+    private Animator anim;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        baseSpeed = agent.speed;
+        anim = avatar.GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -122,7 +127,7 @@ public class FixedPatrolAI : MonoBehaviour
 
     private void NextPatrol()
     {
-        agent.speed = 2;
+        agent.speed = baseSpeed;
         walkPoint = new Vector3(path[patrolRoute].position.x,path[patrolRoute].position.y, path[patrolRoute].position.z);
         walkPointSet = true;
         if(++patrolRoute >= path.Length) patrolRoute = 0;
@@ -130,7 +135,7 @@ public class FixedPatrolAI : MonoBehaviour
 
     private void BaseAiChase()
     {
-        agent.speed = 5;
+        agent.speed = baseSpeed + 3;
         agent.SetDestination(playerInSightRange[0].transform.position);
     }
 
@@ -141,6 +146,7 @@ public class FixedPatrolAI : MonoBehaviour
 
         if(!alreadyAttacked)
         {
+            anim.SetTrigger("Shoot");
             gameObject.GetComponent<AIWeapon>().Fire(player);
 
             alreadyAttacked = true;

@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 5647591634828588138}
   - component: {fileID: 8385501555780629340}
   m_Layer: 0
-  m_Name: SettledPlasmaPatrolAI
+  m_Name: Plasma_BasicEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
