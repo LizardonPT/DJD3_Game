@@ -62,7 +62,7 @@ public class HP : MonoBehaviour
             //Destroy the object after 2s
             Destroy(floatingText, 2f);
             
-            if(gameObject.tag != "Switch")
+            if(gameObject.tag != "Switch" && gameObject.tag != "Shield" && gameObject.tag != "Innocent")
             {
                 SendMessage("UnderAttack");
             }
