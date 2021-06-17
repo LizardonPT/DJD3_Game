@@ -25,8 +25,6 @@ public class PlasmaGun : MonoBehaviour
         {
             timer = 0f;
             FireGun();
-            myAudio.clip = plasmaSound;
-            myAudio.Play();
         }
     }
 
@@ -38,6 +36,10 @@ public class PlasmaGun : MonoBehaviour
             RaycastHit hitInfo;
             Vector3 direction;
             LineRenderer plasmalr;
+
+            //Plays Electric gun sound
+            myAudio.clip = plasmaSound;
+            myAudio.Play();
 
             //Draw line
             //LineRenderer plasmalr = plasma.GetComponent<LineRenderer>();

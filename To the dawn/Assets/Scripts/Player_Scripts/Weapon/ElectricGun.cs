@@ -26,8 +26,6 @@ public class ElectricGun : MonoBehaviour
         {
             timer = 0f;
             FireGun();
-            myAudio.clip = electricSound;
-            myAudio.Play();
         }
     }
 
@@ -43,6 +41,10 @@ public class ElectricGun : MonoBehaviour
 
             // Creates thunder effect
             GameObject newthunder;
+
+            //Plays Electric gun sound
+            myAudio.clip = electricSound;
+            myAudio.Play();
 
             // If it hits something ...
             if (Physics.Raycast(ray,out hitInfo, 100,~(1 << LayerMask.NameToLayer("isPlayer"))))
