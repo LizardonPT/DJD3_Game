@@ -60,4 +60,10 @@ public class TurretAI : MonoBehaviour
     {
         sightRange *= 2;
     }
+
+    // Temporary fix i guess
+    private void Dead()
+    {
+        GetComponent<TurretAI>().enabled = false;
+    }
 }

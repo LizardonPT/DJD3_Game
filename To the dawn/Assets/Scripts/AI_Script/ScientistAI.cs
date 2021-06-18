@@ -72,4 +72,12 @@ public class ScientistAI : MonoBehaviour
         anim.SetBool("Fear", true);
         agent.Move((transform.position - player.position).normalized* runSpeed * Time.deltaTime);
     }
+
+    // Temporary fix i guess
+    private void Dead()
+    {
+        agent.speed = 0;
+        agent.velocity = Vector3.zero;
+        GetComponent<ScientistAI>().enabled = false;
+    }
 }

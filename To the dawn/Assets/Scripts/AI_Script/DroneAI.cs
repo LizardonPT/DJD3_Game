@@ -124,4 +124,12 @@ public class DroneAI : MonoBehaviour
     {
         sightRange *= 2;
     }
+
+    // Temporary fix i guess
+    private void Dead()
+    {
+        agent.speed = 0;
+        agent.velocity = Vector3.zero;
+        GetComponent<DroneAI>().enabled = false;
+    }
 }

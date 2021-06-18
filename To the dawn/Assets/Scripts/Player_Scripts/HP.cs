@@ -33,35 +33,23 @@ public class HP : MonoBehaviour
     // Do not remove its useful to destroy objects or components - this case is used.
     void Start() {}
 
-    void Update()
-    {
-        GetCurrentFill();
-    }
     public void HPModifier(int modHP, string damageType)
     {
         // Calculates the amount of lost hp and updates it
         int decrease = Mathf.Max(0, modHP - gameObject.GetComponent<Armor>().ArmorReduction(damageType));
         hp -= decrease;
-        
+
         // If its the player 
         if (gameObject.layer == 9)
         { // Updates the interface
             hpText.text = "Health: " + hp.ToString();
+            GetCurrentFill();
         }
         // If not a pop up appears on the target location
         else
         {
-            // If it is damaged
-            if (decrease > 0)
-            {// Spawns the Text Object
-                floatingText = Instantiate(dmgTextPrefab, transform.position,
-                    Quaternion.FromToRotation(transform.position, player.transform.position), transform);
-
-                // Updates the text according to the value the enemy lost
-                floatingText.text = decrease.ToString();
-            }
             // If the target is a switch
-            else if(gameObject.tag == "Switch")
+            if(gameObject.tag == "Switch")
             {
                 // Unlockes the door
                 transform.Find("IndicatorOn").gameObject.SetActive(true);
@@ -73,6 +61,15 @@ public class HP : MonoBehaviour
                 // Placeholder visual feedback
                 floatingText = Instantiate(dmgTextPrefab, transform.position,
                     Quaternion.FromToRotation(transform.position, player.transform.position), transform);
+            }
+            // If it is damaged
+            else if (decrease > 0)
+            {// Spawns the Text Object
+                floatingText = Instantiate(dmgTextPrefab, transform.position,
+                    Quaternion.FromToRotation(transform.position, player.transform.position), transform);
+
+                // Updates the text according to the value the enemy lost
+                floatingText.text = decrease.ToString();
             }
             // If it is not damaged
             else
@@ -93,15 +90,6 @@ public class HP : MonoBehaviour
         // If the hp is less or equal to 0 it dies
         if(hp <= 0)
         {
-            // Destroys the game object
-            if (anim != null)
-            { 
-                anim.SetTrigger("Death");
-                Destroy(gameObject, 3);
-            }
-            else Destroy(gameObject);
-
-
             // If the target is the player
             if (gameObject.layer == 9)
             {
@@ -118,6 +106,17 @@ public class HP : MonoBehaviour
                 // ... Updates the player Kill Streak and stops the enemy from shooting
                 Destroy(gameObject.GetComponent<ACBasicEnemy>());
                 player.GetComponent<KillCounter>().KillUpdate();
+            }
+            // Destroys the game object
+            if (anim != null)
+            {
+                anim.SetTrigger("Death");
+                SendMessage("Dead");
+                Destroy(gameObject, 3);
+            }
+            else 
+            {
+                Destroy(gameObject);
             }
         }
     }

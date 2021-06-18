@@ -73,6 +73,7 @@ public class ShieldAI : MonoBehaviour
             // If he saw you, he will chase
             if (chaseMode)
             {
+                timer = 0;
                 BaseAiChase();
             }
             // If he sees you for the first time, chase activates
@@ -267,5 +268,13 @@ public class ShieldAI : MonoBehaviour
     private void UnderAttack()
     {
         sightRange *= 2;
+    }
+
+    // Temporary fix i guess
+    private void Dead()
+    {
+        agent.speed = 0;
+        agent.velocity = Vector3.zero;
+        GetComponent<ShieldAI>().enabled = false;
     }
 }

@@ -13,11 +13,12 @@ public class AIWeapon : MonoBehaviour
     [SerializeField] private string damageType = default;
     private Collider[] playerInExplosion;
     
-
+    // Do not remove its useful to destroy objects or components - this case is used.
+    void Start() {}
 
     public void Fire(Vector3 player)
     {
-        Ray ray = new Ray(gameObject.transform.position, player - gameObject.transform.position);
+        Ray ray = new Ray(firePoint.transform.position, player - firePoint.transform.position);
         RaycastHit hitInfo;
 
         if (damageType == "plasma")
