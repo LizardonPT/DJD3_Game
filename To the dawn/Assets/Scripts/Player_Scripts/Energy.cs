@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Energy : MonoBehaviour
 {
     [SerializeField] private int energyMax = 100;
     [SerializeField] private TextMeshProUGUI energyText = default;
+    [SerializeField] private Image mask = default;
     public int energy;
     private float timer;
     private int boost;
@@ -46,6 +48,8 @@ public class Energy : MonoBehaviour
         }
         // Update the energy interface
         energyText.text = "Energy: " + energy.ToString();
+
+        GetCurrentFill();
     }
 
     public void AdrenalineBoost(int extraBoost)
@@ -58,5 +62,11 @@ public class Energy : MonoBehaviour
     {
         // Updates energy according to the expenditure
         energy -= usedEnergy;
+    }
+
+    void GetCurrentFill()
+    {
+        float fillAmount = (float)energy / (float)energyMax;
+        mask.fillAmount = fillAmount;
     }
 }
