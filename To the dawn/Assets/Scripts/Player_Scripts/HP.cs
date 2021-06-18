@@ -19,6 +19,7 @@ public class HP : MonoBehaviour
         // If not locates player Gameobject
         else player = GameObject.Find("Player");
     }
+    // Do not remove its useful to destroy objects or components - this case is used.
     void Start() {}
     public void HPModifier(int modHP, string damageType)
     {
@@ -46,8 +47,14 @@ public class HP : MonoBehaviour
             // If the target is a switch
             else if(gameObject.tag == "Switch")
             {
-                // Some animation or something
-                Debug.Log("TRiiger tag activated");
+                // Unlockes the door
+                transform.Find("IndicatorOn").gameObject.SetActive(true);
+                transform.Find("IndicatorOff").gameObject.SetActive(false);
+                transform.Find("GameObject").Find("UnlockableDoor").gameObject.GetComponentInChildren<Animator>().SetBool("doorUnlock", true);
+                //Destroys the object
+                Destroy(GetComponent<HP>());
+                hp = 1;
+                // Placeholder visual feedback
                 floatingText = Instantiate(dmgTextPrefab, transform.position,
                     Quaternion.FromToRotation(transform.position, player.transform.position), transform);
             }
@@ -58,7 +65,6 @@ public class HP : MonoBehaviour
                     Quaternion.FromToRotation(transform.position, player.transform.position), transform);
             }
             
-
             //Destroy the object after 2s
             Destroy(floatingText, 2f);
             
@@ -66,16 +72,6 @@ public class HP : MonoBehaviour
             {
                 SendMessage("UnderAttack");
             }
-        }
-
-        // Alway updates the kill counter for layer Dummy
-        if(gameObject.tag == "Switch")
-        {
-            transform.Find("IndicatorOn").gameObject.SetActive(true);
-            transform.Find("IndicatorOff").gameObject.SetActive(false);
-            transform.Find("GameObject").Find("UnlockableDoor").gameObject.GetComponentInChildren<Animator>().SetBool("doorUnlock",true);
-            Destroy(GetComponent<HP>());
-            hp = 1;
         }
 
         // If the hp is less or equal to 0 it dies

@@ -47,9 +47,6 @@ public class Settings : MonoBehaviour
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
-        Debug.Log(resolution.width+"" +
-            resolution.height +""+
-            Screen.fullScreen);
         Screen.SetResolution(resolution.width,
             resolution.height,
             Screen.fullScreen);

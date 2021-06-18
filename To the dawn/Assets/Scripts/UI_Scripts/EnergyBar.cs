@@ -7,9 +7,9 @@ using UnityEngine.UI;
 [ExecuteInEditMode]
 public class EnergyBar : MonoBehaviour
 {
-    [SerializeField] private int maximum;
-    [SerializeField] private int current;
-    [SerializeField] private Image mask;
+    [SerializeField] private int maximum = default;
+    [SerializeField] private int current = default;
+    [SerializeField] private Image mask = default;
 
     // Start is called before the first frame update
     void Start()
