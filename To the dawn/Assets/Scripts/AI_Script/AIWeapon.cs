@@ -35,7 +35,6 @@ public class AIWeapon : MonoBehaviour
                 if(hp)
                 {
                     hp.HPModifier(damage, "plasma");
-                    Debug.Log("lesshp");
                 }
             }
             else{

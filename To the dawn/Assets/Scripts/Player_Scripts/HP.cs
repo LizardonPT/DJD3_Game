@@ -10,14 +10,23 @@ public class HP : MonoBehaviour
     [SerializeField] private TextMeshPro dmgTextPrefab = default;
     [SerializeField] private TextMeshPro invulnerablePrefab = default;
     private GameObject player;
+    private Animator anim;
 
     private TextMeshPro floatingText;
     void Awake()
     {
         // If its the player initializes hp interface
-        if (gameObject.layer == 9) hpText.text = "Health: " + hp.ToString();
+        if (gameObject.layer == 9)
+        {
+            hpText.text = "Health: " + hp.ToString();
+        }
         // If not locates player Gameobject
-        else player = GameObject.Find("Player");
+        else
+        {
+            player = GameObject.Find("Player");
+        }
+        // Gets the FIRST animator it finds in the game object or children
+        anim = GetComponentInChildren<Animator>();
     }
     // Do not remove its useful to destroy objects or components - this case is used.
     void Start() {}
@@ -78,10 +87,16 @@ public class HP : MonoBehaviour
         if(hp <= 0)
         {
             // Destroys the game object
-            Destroy(gameObject);
+            if (anim != null)
+            { 
+                anim.SetTrigger("Death");
+                Destroy(gameObject, 3);
+            }
+            else Destroy(gameObject);
+
 
             // If the target is the player
-            if(gameObject.layer == 9)
+            if (gameObject.layer == 9)
             {
                 // Spawns the Death Screen
                 deathScreen.SetActive(true);
@@ -91,9 +106,10 @@ public class HP : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
             }
             // If not the player...
-            else
+            else if (anim == null || !anim.GetBool("Died"))
             {
-                // ... Updates the player Kill Streak
+                // ... Updates the player Kill Streak and stops the enemy from shooting
+                Destroy(gameObject.GetComponent<ACBasicEnemy>());
                 player.GetComponent<KillCounter>().KillUpdate();
             }
         }
@@ -110,5 +126,10 @@ public class HP : MonoBehaviour
             // Updates HP interface
             hpText.text = "Health: " + hp.ToString();
         }
+    }
+
+    public void Death()
+    {
+        anim.SetBool("Died", true);
     }
 }

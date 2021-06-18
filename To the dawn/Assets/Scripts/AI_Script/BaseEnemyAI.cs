@@ -27,11 +27,13 @@ public class BaseEnemyAI : MonoBehaviour
     {
         // Checkif the player is in sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-
         // If the player is not in sight, move random
-        if(!playerInSightRange) AIWander();
-        // If player is in sight  run
-        if(playerInSightRange) BaseAiRun();
+        if (!playerInSightRange) AIWander();
+        // If player is in sight run
+        if (playerInSightRange)
+        {
+            BaseAiRun(); 
+        }
     }
 
     private void AIWander()
@@ -64,6 +66,7 @@ public class BaseEnemyAI : MonoBehaviour
     private void BaseAiRun()
     {
         // Runs away to the contrary direction of the player
+        //if(Physics.Raycast(transform.position, player.transform.position - transform.position, 10, 1 << LayerMask.NameToLayer("isGround")))
         agent.Move((transform.position - player.position).normalized* runSpeed * Time.deltaTime);
     }
 }
