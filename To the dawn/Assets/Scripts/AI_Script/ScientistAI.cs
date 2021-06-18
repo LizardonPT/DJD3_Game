@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class BaseEnemyAI : MonoBehaviour
+public class ScientistAI : MonoBehaviour
 {
     [SerializeField] private Transform player = default;
     [SerializeField] private LayerMask whatIsGround= default, whatIsPlayer= default;
     [SerializeField] private int runSpeed = default;
     private NavMeshAgent agent;
+    private Animator anim;
 
     // Wandering Variables
     private bool walkPointSet;
@@ -21,6 +22,7 @@ public class BaseEnemyAI : MonoBehaviour
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -67,6 +69,7 @@ public class BaseEnemyAI : MonoBehaviour
     {
         // Runs away to the contrary direction of the player
         //if(Physics.Raycast(transform.position, player.transform.position - transform.position, 10, 1 << LayerMask.NameToLayer("isGround")))
+        anim.SetBool("Fear", true);
         agent.Move((transform.position - player.position).normalized* runSpeed * Time.deltaTime);
     }
 }
