@@ -15,11 +15,13 @@ public class DroneAI : MonoBehaviour
     private bool chaseMode = false;
     private Vector3 player = default;
     private float defaultSight = default;
+    Animator anim;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         defaultSight = sightRange;
+        anim = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -126,10 +128,13 @@ public class DroneAI : MonoBehaviour
     }
 
     // Temporary fix i guess
-    private void Dead()
+    private void DroneDeath()
     {
         agent.speed = 0;
         agent.velocity = Vector3.zero;
+        anim.SetBool("Died", true);
+        GetComponent<SphereCollider>().enabled = false;
         GetComponent<DroneAI>().enabled = false;
+
     }
 }

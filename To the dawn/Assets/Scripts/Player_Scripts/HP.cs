@@ -103,15 +103,13 @@ public class HP : MonoBehaviour
             // If not the player...
             else if (anim == null || !anim.GetBool("Died"))
             {
-                // ... Updates the player Kill Streak and stops the enemy from shooting
-                Destroy(gameObject.GetComponent<ACBasicEnemy>());
+                // ... Updates the player Kill Streak
                 player.GetComponent<KillCounter>().KillUpdate();
             }
             // Destroys the game object
             if (anim != null)
             {
                 anim.SetTrigger("Death");
-                SendMessage("Dead");
                 Destroy(gameObject, 3);
             }
             else 
@@ -132,11 +130,6 @@ public class HP : MonoBehaviour
             // Updates HP interface
             hpText.text = "Health: " + hp.ToString();
         }
-    }
-
-    public void Death()
-    {
-        anim.SetBool("Died", true);
     }
 
     void GetCurrentFill()

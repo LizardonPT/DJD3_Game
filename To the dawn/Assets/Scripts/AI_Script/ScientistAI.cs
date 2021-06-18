@@ -74,10 +74,13 @@ public class ScientistAI : MonoBehaviour
     }
 
     // Temporary fix i guess
-    private void Dead()
+    private void ScientistDeath()
     {
+        anim.SetBool("Died", true);
         agent.speed = 0;
         agent.velocity = Vector3.zero;
+        GetComponent<Collider>().enabled = false;
         GetComponent<ScientistAI>().enabled = false;
+
     }
 }
