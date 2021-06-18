@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class HP : MonoBehaviour
 {
     [SerializeField] private int hp;
     [SerializeField] private int maxHP = 5;
     [SerializeField] private TextMeshProUGUI hpText = default;
+    [SerializeField] private Image mask = default;
     [SerializeField] private GameObject deathScreen = default;
     [SerializeField] private TextMeshPro dmgTextPrefab = default;
     [SerializeField] private TextMeshPro invulnerablePrefab = default;
@@ -30,6 +32,11 @@ public class HP : MonoBehaviour
     }
     // Do not remove its useful to destroy objects or components - this case is used.
     void Start() {}
+
+    void Update()
+    {
+        GetCurrentFill();
+    }
     public void HPModifier(int modHP, string damageType)
     {
         // Calculates the amount of lost hp and updates it
@@ -131,5 +138,11 @@ public class HP : MonoBehaviour
     public void Death()
     {
         anim.SetBool("Died", true);
+    }
+
+    void GetCurrentFill()
+    {
+        float fillAmount = (float)hp / (float)maxHP;
+        mask.fillAmount = fillAmount;
     }
 }
