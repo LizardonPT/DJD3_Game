@@ -104,22 +104,22 @@ public class HP : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
             }
             // If not the player...
-            else if (anim == null || !anim.GetBool("Died"))
+            else
             {
                 // ... Updates the player Kill Streak
                 player.GetComponent<KillCounter>().KillUpdate();
-            }
-            // Destroys the game object
-            if (anim != null)
-            {
-                anim.SetTrigger("Death");
+                // Destroys the game object
+                if (anim != null)
+                {
+                    anim.SetTrigger("Death");
 
-                SendMessage("Dead");
-                Destroy(gameObject, 3);
-            }
-            else 
-            {
-                Destroy(gameObject);
+                    SendMessage("Dead");
+                    Destroy(gameObject, 3);
+                }
+                else 
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }

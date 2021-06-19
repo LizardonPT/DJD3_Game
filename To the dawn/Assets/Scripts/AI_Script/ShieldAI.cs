@@ -24,6 +24,7 @@ public class ShieldAI : MonoBehaviour
     private int attackCounter = 0;
     private float dashTiming;
     private bool dashOn = false;
+    private bool rest = false;
     private Vector3 playerCharge;
     private Animator anim;
 
@@ -61,8 +62,17 @@ public class ShieldAI : MonoBehaviour
             dashTiming++;
             if(dashTiming >= 100)
             {
-                dashTiming = 0;
                 dashOn = false;
+                rest = true;
+            }
+        }
+        else if(rest)
+        {
+            dashTiming++;
+            if(dashTiming >= 150)
+            {
+                dashTiming = 0;
+                rest = false;
             }
         }
         else if (playerInSightRange.Length == 0 && playerInRangedAttackRange.Length == 0 && playerInMeleeAttackRange.Length == 0)
@@ -280,6 +290,6 @@ public class ShieldAI : MonoBehaviour
         agent.speed = 0;
         agent.velocity = Vector3.zero;
         GetComponent<CapsuleCollider>().enabled = false;
-        GetComponent<FixedPatrolAI>().enabled = false;
+        GetComponent<ShieldAI>().enabled = false;
     }
 }
