@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class HP : MonoBehaviour
 {
-    [SerializeField] private int hp;
+    public int hp;
     [SerializeField] private int maxHP = 5;
     [SerializeField] private TextMeshProUGUI hpText = default;
     [SerializeField] private Image mask = default;
