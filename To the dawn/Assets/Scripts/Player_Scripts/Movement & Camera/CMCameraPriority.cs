@@ -33,4 +33,9 @@ public class CMCameraPriority : MonoBehaviour
             }
         }
     }
+    public void InterruptAim()
+    {
+        aimCamera.Priority = 0;
+        playerAim = false;
+    }
 }

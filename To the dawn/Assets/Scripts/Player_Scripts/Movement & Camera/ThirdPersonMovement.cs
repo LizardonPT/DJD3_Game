@@ -23,7 +23,6 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private AudioClip dashSound;
     private AudioSource myAudio;
 
-
     private bool isGrounded;
 
     private int charges;
@@ -43,7 +42,6 @@ public class ThirdPersonMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         charges = maxCharges;
         dashChargeText.text = "Charges: " + maxCharges.ToString();
-
         myAudio = this.GetComponent<AudioSource>();
     }
 
@@ -89,6 +87,8 @@ public class ThirdPersonMovement : MonoBehaviour
             dashChargeText.text = "Charges: " + charges.ToString();
             myAudio.clip = dashSound;
             myAudio.Play();
+            gameObject.GetComponent<CMCameraPriority>().InterruptAim();
+            //CMCameraPriority.Interrup
         }
         else if (Input.GetButtonDown("Dash") && charges == 0)
         {

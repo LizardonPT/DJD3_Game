@@ -90,9 +90,12 @@ public class HP : MonoBehaviour
         // If the hp is less or equal to 0 it dies
         if(hp <= 0)
         {
+            
             // If the target is the player
             if (gameObject.layer == 9)
             {
+                // Reset HP display to 0
+                hpText.text = "Health: 0";
                 // Spawns the Death Screen
                 deathScreen.SetActive(true);
                 // Stops game Time
