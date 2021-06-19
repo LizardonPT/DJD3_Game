@@ -8,6 +8,7 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private CharacterController controller = default;
     [SerializeField] private Transform cam = default;
     public float speed = 6f;
+    public float sensitivity = 1f;
     [SerializeField] private float gravity = -1000000f;
     [SerializeField] private float jumpHeight = 2f;
 
@@ -48,8 +49,8 @@ public class ThirdPersonMovement : MonoBehaviour
         timer += Time.deltaTime;
         dashTimer += Time.deltaTime;
 
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        float horizontal = Input.GetAxisRaw("Horizontal") * sensitivity;
+        float vertical = Input.GetAxisRaw("Vertical") * sensitivity;
         float targetAngle;
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
@@ -132,5 +133,10 @@ public class ThirdPersonMovement : MonoBehaviour
     public void RapidCharge(float bonus)
     {
         tempDashCooldown = dashCooldown * bonus;
+    }
+
+    public void changeSensitivity(float _sensitivity)
+    {
+        sensitivity = _sensitivity;
     }
 }
