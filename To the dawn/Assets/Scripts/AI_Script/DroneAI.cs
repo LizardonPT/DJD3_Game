@@ -133,7 +133,6 @@ public class DroneAI : MonoBehaviour
     {
         agent.speed = 0;
         agent.velocity = Vector3.zero;
-        anim.SetBool("Died", true);
         GetComponent<SphereCollider>().enabled = false;
         GetComponent<DroneAI>().enabled = false;
 

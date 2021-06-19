@@ -167,7 +167,6 @@ public class FixedPatrolAI : MonoBehaviour
     // Temporary fix i guess
     private void Dead()
     {
-        anim.SetBool("Died", true);
         agent.speed = 0;
         agent.velocity = Vector3.zero;
         GetComponent<CapsuleCollider>().enabled = false;
