@@ -9,7 +9,12 @@ public class FixedPatrolAI : MonoBehaviour
     [SerializeField] private float timer = default;
     [SerializeField] private float timeBetweenAttacks = default;
     [SerializeField] float attackRange = default;
-    [SerializeField] private GameObject avatar = default;
+    //Think avatar is no longer needed just need a ordinary getcomponent not sure tho
+    [SerializeField] private Transform avatar = default;
+    [SerializeField] private Transform ragAvatar = default;
+    [SerializeField] private GameObject ragdoll = default;
+    [SerializeField] private GameObject uniform = default;
+    [SerializeField] private GameObject body = default;
     public float sightRange = default;
     private Collider[] playerInSightRange;
     private Collider[] playerInAttackRange;
@@ -27,7 +32,7 @@ public class FixedPatrolAI : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         baseSpeed = agent.speed;
-        anim = avatar.GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -171,7 +176,34 @@ public class FixedPatrolAI : MonoBehaviour
         anim.SetBool("Died", true);
         agent.speed = 0;
         agent.velocity = Vector3.zero;
+        ragdoll.SetActive(true);
+        CopyTransformData(avatar, ragAvatar, agent.velocity);
+        uniform.SetActive(false);
+        body.SetActive(false);
         GetComponent<Collider>().enabled = false;
         GetComponent<FixedPatrolAI>().enabled = false;
     }
+
+    private void CopyTransformData(Transform sourceTransform, Transform destinationTransform, Vector3 velocity)
+    {
+        if (sourceTransform.childCount != destinationTransform.childCount)
+        {
+            Debug.LogWarning("Invalid transform copy, they need to match transform hierarchies");
+            return;
+        }
+
+        for (int i = 0; i < sourceTransform.childCount; i++)
+        {
+            var source = sourceTransform.GetChild(i);
+            var destination = destinationTransform.GetChild(i);
+            destination.position = source.position;
+            destination.rotation = source.rotation;
+            var rb = destination.GetComponent<Rigidbody>();
+            if (rb != null)
+                rb.velocity = velocity;
+
+            CopyTransformData(source, destination, velocity);
+        }
+    }
+
 }
