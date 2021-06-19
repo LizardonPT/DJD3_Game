@@ -7,7 +7,6 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dashChargeText = default;
     [SerializeField] private CharacterController controller = default;
     [SerializeField] private Transform cam = default;
-
     public float speed = 6f;
     [SerializeField] private float gravity = -1000000f;
     [SerializeField] private float jumpHeight = 2f;
@@ -19,23 +18,18 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private LayerMask groundMask = default;
     [SerializeField] private int maxCharges = default;
     [SerializeField] private int energyDash = 10;
-
     [SerializeField] private AudioClip dashSound;
     private AudioSource myAudio;
-
     private bool isGrounded;
-
     private int charges;
     private float timer;
     private float dashTimer;
     private float turnSmoothVelocity;
     private float dashCooldown = 3f;
     private float tempDashCooldown = 3f;
-
     private Vector3 moveDir;
     private Vector3 velocity;
 
-    
     // Start is called before the first frame update
     void Start()
     {

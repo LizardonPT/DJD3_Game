@@ -9,12 +9,11 @@ public class PlasmaGun : MonoBehaviour
     [SerializeField] private LineRenderer lineRend = default;
     [SerializeField] private AudioClip plasmaSound;
     private AudioSource myAudio;
-
     private float timer;
 
     private void Start()
     {
-        myAudio = this.GetComponent<AudioSource>();
+        myAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

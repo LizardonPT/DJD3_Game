@@ -15,7 +15,7 @@ public class ElectricGun : MonoBehaviour
 
     private void Start()
     {
-        myAudio = this.GetComponent<AudioSource>();
+        myAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

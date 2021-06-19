@@ -6,7 +6,7 @@ public class LoadingGame : MonoBehaviour
     public bool loadIsOn;
     void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 
     public void SeeLoad()

@@ -3,8 +3,6 @@ using Cinemachine;
 
 public class CMCameraPriority : MonoBehaviour
 {
-    //[SerializeField] 
-    //private CinemachineFreeLook mainCamera;
     [SerializeField] 
     private CinemachineFreeLook aimCamera = default;
 

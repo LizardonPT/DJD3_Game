@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HP : MonoBehaviour
 {
@@ -13,7 +14,6 @@ public class HP : MonoBehaviour
     [SerializeField] private TextMeshPro invulnerablePrefab = default;
     private GameObject player;
     private Animator anim;
-
     private TextMeshPro floatingText;
     void Awake()
     {
@@ -77,11 +77,11 @@ public class HP : MonoBehaviour
                 floatingText = Instantiate(invulnerablePrefab, transform.position,
                     Quaternion.FromToRotation(transform.position, player.transform.position), transform);
             }
-            
+
             //Destroy the object after 2s
             Destroy(floatingText, 2f);
-            
-            if(gameObject.tag != "Switch" && gameObject.tag != "Shield" && gameObject.tag != "Innocent")
+
+            if(gameObject.tag != "Switch" && gameObject.tag != "Shield" && gameObject.tag != "Innocent" && gameObject.tag != "FinalObjective")
             {
                 SendMessage("UnderAttack");
             }
@@ -90,7 +90,6 @@ public class HP : MonoBehaviour
         // If the hp is less or equal to 0 it dies
         if(hp <= 0)
         {
-            
             // If the target is the player
             if (gameObject.layer == 9)
             {
@@ -106,6 +105,10 @@ public class HP : MonoBehaviour
             // If not the player...
             else
             {
+                if(gameObject.tag == "FinalObjective")
+                {
+                    SceneManager.LoadScene(0);
+                }
                 // ... Updates the player Kill Streak
                 player.GetComponent<KillCounter>().KillUpdate();
                 // Destroys the game object
@@ -116,7 +119,7 @@ public class HP : MonoBehaviour
                     SendMessage("Dead");
                     Destroy(gameObject, 3);
                 }
-                else 
+                else
                 {
                     Destroy(gameObject);
                 }

@@ -14,7 +14,6 @@ public class ScientistAI : MonoBehaviour
     [SerializeField] private Vector3 walkPoint;
     [SerializeField] private float walkPointRange = default;
 
-
     // Sight Variables
     [SerializeField] float sightRange = default;
     private bool playerInSightRange;
@@ -45,7 +44,7 @@ public class ScientistAI : MonoBehaviour
 
         // If walkpoint is set go there
         if(walkPointSet) agent.destination = walkPoint;
-        
+
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
         // Walkpoint reached
@@ -70,6 +69,8 @@ public class ScientistAI : MonoBehaviour
         // Runs away to the contrary direction of the player
         //if(Physics.Raycast(transform.position, player.transform.position - transform.position, 10, 1 << LayerMask.NameToLayer("isGround")))
         anim.SetBool("Fear", true);
+        transform.LookAt(player);
+        transform.Rotate(0,180,0);
         agent.Move((transform.position - player.position).normalized* runSpeed * Time.deltaTime);
     }
 
@@ -80,6 +81,5 @@ public class ScientistAI : MonoBehaviour
         agent.velocity = Vector3.zero;
         GetComponent<CapsuleCollider>().enabled = false;
         GetComponent<ScientistAI>().enabled = false;
-
     }
 }

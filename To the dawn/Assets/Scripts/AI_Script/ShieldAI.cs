@@ -25,9 +25,7 @@ public class ShieldAI : MonoBehaviour
     private float dashTiming;
     private bool dashOn = false;
     private bool rest = false;
-    private Vector3 playerCharge;
     private Animator anim;
-
 
     private void Awake()
     {
@@ -197,7 +195,6 @@ public class ShieldAI : MonoBehaviour
                 BaseAiPatrol();
             }
         }
-        
     }
 
     private void BaseAiPatrol()

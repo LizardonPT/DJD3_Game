@@ -7,6 +7,7 @@ TagManager:
   - Switch
   - Shield
   - Innocent
+  - FinalObjective
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - isPlayer
   - Dummy
   - EnemyShield
-  - 
+  - FinalObjective
   - 
   - 
   - 

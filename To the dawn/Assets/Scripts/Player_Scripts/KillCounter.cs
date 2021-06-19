@@ -9,7 +9,7 @@ public class KillCounter : MonoBehaviour
     public int killScore = 0;
     private float timer = 0;
     private int confirmScore = 2;
-    
+
     // Update is called once per frame
     void Update()
     {

@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
     private const float MAX_STRAFE_VELOCITY = 3.0f;
     private const float MAX_JUMP_VELOCITY = 30.0f;
     private const float MAX_FALL_VELOCITY = 50.0f;
-
     private CharacterController _controller;
     private Vector3 _acceleration;
     private Vector3 _velocity;
@@ -29,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
         _jump = false;
     }
 
-    
     void Update()
     {
         CheckForJump();
@@ -86,7 +84,6 @@ public class PlayerMovement : MonoBehaviour
     private void UpdatePosition()
     {
         _motion = transform.TransformVector(_velocity * Time.fixedDeltaTime);
-        
         _controller.Move(_motion);
     }
 }

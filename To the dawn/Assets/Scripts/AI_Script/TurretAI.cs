@@ -10,7 +10,6 @@ public class TurretAI : MonoBehaviour
     private Collider[] playerInSightRange;
     private Vector3 player;
 
-
     // Update is called once per frame
     void FixedUpdate()
     {
