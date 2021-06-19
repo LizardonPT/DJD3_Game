@@ -113,7 +113,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2404891402701243345, guid: 11bcfe4da9bbdc24ca28a26acd943c35, type: 3}
+  - {fileID: 2100000, guid: 0a97fa4db4ac1c8409eb61d2172a6cee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -230,7 +230,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2404891402701243345, guid: 11bcfe4da9bbdc24ca28a26acd943c35, type: 3}
+  - {fileID: 2100000, guid: 0a97fa4db4ac1c8409eb61d2172a6cee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -377,7 +377,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4612162990109294230, guid: 11bcfe4da9bbdc24ca28a26acd943c35, type: 3}
+  - {fileID: 2100000, guid: 1146f8db038fd6d46b9f00e7fe4e0bba, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -610,7 +610,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 414497001313134177, guid: 11bcfe4da9bbdc24ca28a26acd943c35, type: 3}
+  - {fileID: 2100000, guid: ce22f4c859c7c944598d7ec8020d209d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -890,6 +890,7 @@ GameObject:
   - component: {fileID: 3970583814227390263}
   - component: {fileID: 3970583814227390262}
   - component: {fileID: 3970583814227390261}
+  - component: {fileID: 209124092}
   m_Layer: 0
   m_Name: ShieldSoldier
   m_TagString: Untagged
@@ -904,7 +905,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3970583814227390260}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 22.521324, y: -13.467424, z: -0.6191673}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -926,7 +927,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.4
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
@@ -1007,7 +1008,7 @@ MonoBehaviour:
   path:
   - {fileID: 0}
   - {fileID: 0}
-  checkpointArea: 5
+  checkpointArea: 1
   timer: 0
   timeBetweenAttacks: 1
   sightRange: 30
@@ -1054,6 +1055,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &209124092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3970583814227390260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fcb6c71fc15b9b4d91703647ff64579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3970583814403557818
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,7 +1367,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4398399861666668291, guid: 11bcfe4da9bbdc24ca28a26acd943c35, type: 3}
+  - {fileID: 2100000, guid: 9ad9058e33dc6d14d98609c795cf43ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1474,7 +1487,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3970583814916714467}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.013999881, y: 0.972, z: 0.5439988}
+  m_LocalPosition: {x: 0.0102, y: 1.369, z: 0.9191}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3970583814227390252}
@@ -1530,7 +1543,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8697670086703581532, guid: 11bcfe4da9bbdc24ca28a26acd943c35, type: 3}
+  - {fileID: 2100000, guid: f715c3b66cf53ae4d84240a3acf742b8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1602,7 +1615,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3970583814965597246}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.013999941, y: 0.972, z: 28.677908}
+  m_LocalPosition: {x: 0, y: 1, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3970583814227390252}

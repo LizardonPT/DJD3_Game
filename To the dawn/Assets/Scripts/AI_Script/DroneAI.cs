@@ -100,6 +100,7 @@ public class DroneAI : MonoBehaviour
     private void BaseAiChase()
     {
         agent.speed = 4;
+        Debug.Log("Drone Chasing");
         agent.SetDestination(playerInSightRange[0].transform.position);
     }
 
