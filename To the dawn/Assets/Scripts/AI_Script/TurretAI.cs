@@ -64,6 +64,7 @@ public class TurretAI : MonoBehaviour
     // Temporary fix i guess
     private void Dead()
     {
+        GetComponent<Collider>().enabled = false;
         GetComponent<TurretAI>().enabled = false;
     }
 }

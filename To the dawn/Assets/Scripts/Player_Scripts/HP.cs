@@ -113,6 +113,8 @@ public class HP : MonoBehaviour
             if (anim != null)
             {
                 anim.SetTrigger("Death");
+
+                SendMessage("Dead");
                 Destroy(gameObject, 3);
             }
             else 

@@ -9,8 +9,6 @@ public class FixedPatrolAI : MonoBehaviour
     [SerializeField] private float timer = default;
     [SerializeField] private float timeBetweenAttacks = default;
     [SerializeField] float attackRange = default;
-    //Think avatar is no longer needed just need a ordinary getcomponent not sure tho
-    [SerializeField] private Transform avatar = default;
     public float sightRange = default;
     private Collider[] playerInSightRange;
     private Collider[] playerInAttackRange;
@@ -167,12 +165,12 @@ public class FixedPatrolAI : MonoBehaviour
     }
 
     // Temporary fix i guess
-    private void BasicDeath()
+    private void Dead()
     {
         anim.SetBool("Died", true);
         agent.speed = 0;
         agent.velocity = Vector3.zero;
-        GetComponent<Collider>().enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
         GetComponent<FixedPatrolAI>().enabled = false;
     }
 }

@@ -128,7 +128,7 @@ public class DroneAI : MonoBehaviour
     }
 
     // Temporary fix i guess
-    private void DroneDeath()
+    private void Dead()
     {
         agent.speed = 0;
         agent.velocity = Vector3.zero;

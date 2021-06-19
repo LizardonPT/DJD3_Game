@@ -25,10 +25,13 @@ public class ShieldAI : MonoBehaviour
     private float dashTiming;
     private bool dashOn = false;
     private Vector3 playerCharge;
+    private Animator anim;
+
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -273,8 +276,10 @@ public class ShieldAI : MonoBehaviour
     // Temporary fix i guess
     private void Dead()
     {
+        anim.SetBool("Died", true);
         agent.speed = 0;
         agent.velocity = Vector3.zero;
-        GetComponent<ShieldAI>().enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
+        GetComponent<FixedPatrolAI>().enabled = false;
     }
 }
