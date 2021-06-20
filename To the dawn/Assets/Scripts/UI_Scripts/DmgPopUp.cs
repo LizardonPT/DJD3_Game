@@ -2,7 +2,10 @@
 
 public class DmgPopUp : MonoBehaviour
 {
-
+    private void Awake()
+    {
+        Destroy(this, 1);
+    }
     // Update is called once per frame
     void Update()
     {
