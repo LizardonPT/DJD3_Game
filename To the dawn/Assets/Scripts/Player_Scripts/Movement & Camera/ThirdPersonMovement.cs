@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
+using Cinemachine;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private Transform cam = default;
     public float speed = 6f;
     public float sensitivity = 1f;
+    private float mouseXSpeed = 450f;
+    private float mouseYSpeed = 4f;
+    private float mouseAimXSpeed = 200f;
+    private float mouseAimYSpeed = 4f;
     [SerializeField] private float gravity = -1000000f;
     [SerializeField] private float jumpHeight = 2f;
 
@@ -40,6 +45,12 @@ public class ThirdPersonMovement : MonoBehaviour
         dashChargeText.text = "Charges: " + maxCharges.ToString();
         myAudio = this.GetComponent<AudioSource>();
         anim = GetComponentInChildren<Animator>();
+
+        mouseXSpeed = 450 * sensitivity;
+        mouseYSpeed = 4 * sensitivity;
+
+        mouseAimXSpeed = 200 * sensitivity;
+        mouseAimYSpeed = 4 * sensitivity;
     }
 
     // Update is called once per frame
@@ -56,9 +67,16 @@ public class ThirdPersonMovement : MonoBehaviour
         float targetAngle;
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        //float yRot = Input.GetAxisRaw("Mouse X") * sensitivity;
-        //float xRot = Input.GetAxisRaw("Mouse Y") * sensitivity;
-        //GameObject.Find("AimCamera").GetComponent<>()*= Quaternion.Euler(xRot, yRot, 0);
+        GameObject.Find("3rd person Player camera").GetComponent<CinemachineFreeLook>().m_XAxis.m_MaxSpeed = mouseXSpeed;
+        GameObject.Find("3rd person Player camera").GetComponent<CinemachineFreeLook>().m_YAxis.m_MaxSpeed = mouseYSpeed;
+        GameObject.Find("AimCamera").GetComponent<CinemachineFreeLook>().m_XAxis.m_MaxSpeed = mouseAimXSpeed;
+        GameObject.Find("AimCamera").GetComponent<CinemachineFreeLook>().m_YAxis.m_MaxSpeed = mouseAimYSpeed;
+        //Change normal sensitivity
+        mouseXSpeed = 450 * sensitivity;
+        mouseYSpeed = 4 * sensitivity;
+        //Change Aim sensitivity
+        mouseAimXSpeed = 200 * sensitivity;
+        mouseAimYSpeed = 4 * sensitivity;
 
         if (dashTimer<0.2f)
         {
