@@ -12,7 +12,8 @@ public class MenuButtons_Script : MonoBehaviour
     /// </summary>
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        GameObject.Find("MCTryout").GetComponent<Animator>().SetBool("Death", true);
+        GameObject.Find("Player").GetComponent<Animator>().SetBool("isRunning", true);
     }
     public void PlayGround()
     {

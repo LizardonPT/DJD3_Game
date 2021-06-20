@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoadLevel : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class LoadLevel : MonoBehaviour
         GameObject loader = GameObject.Find("Load");
         if(loader.GetComponent<LoadingGame>().loadIsOn)
         {
+            loader.GetComponent<LoadingGame>().loadIsOn = false;
+
             PlayerData data = SaveSystem.LoadPlayer();
 
             gameObject.GetComponent<ThirdPersonMovement>().enabled = false;
@@ -21,5 +24,13 @@ public class LoadLevel : MonoBehaviour
 
             gameObject.GetComponent<ThirdPersonMovement>().enabled = true;
         }
+    }
+
+    public void LoadGame()
+    {
+        GameObject loader = GameObject.Find("Load");
+        loader.GetComponent<LoadingGame>().loadIsOn = true;
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

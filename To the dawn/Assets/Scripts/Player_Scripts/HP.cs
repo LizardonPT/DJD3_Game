@@ -33,6 +33,39 @@ public class HP : MonoBehaviour
     // Do not remove its useful to destroy objects or components - this case is used.
     void Start() {}
 
+    void Update()
+    {
+        if(gameObject.layer == 9)
+        {
+            if(Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                maxHP += 10;
+                hp = maxHP;
+                hpText.text = "Health: " + hp.ToString();
+                GetCurrentFill();
+            }
+
+            if(Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                maxHP -= 10;
+                if(maxHP <= 0)
+                {
+                    maxHP = 1;
+                }
+                hp = maxHP;
+                hpText.text = "Health: " + hp.ToString();
+                GetCurrentFill();
+            }
+
+            if(Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                gameObject.GetComponent<ThirdPersonMovement>().enabled = false;
+                gameObject.transform.position = new Vector3 (15.499f,5.27f,-32.79f);
+                gameObject.GetComponent<ThirdPersonMovement>().enabled = true;
+            }
+        }
+    }
+
     public void HPModifier(int modHP, string damageType)
     {
         // Calculates the amount of lost hp and updates it
@@ -97,6 +130,8 @@ public class HP : MonoBehaviour
                 hpText.text = "Health: 0";
                 // Spawns the Death Screen
                 deathScreen.SetActive(true);
+                gameObject.GetComponent<PlasmaGun>().enabled = false;
+                gameObject.GetComponent<PlasmaGun>().enabled = false;
                 // Stops game Time
                 Time.timeScale = 0f;
                 // Unlocks Mouse movement
@@ -137,6 +172,7 @@ public class HP : MonoBehaviour
             hp++;
             // Updates HP interface
             hpText.text = "Health: " + hp.ToString();
+            GetCurrentFill();
         }
     }
 
