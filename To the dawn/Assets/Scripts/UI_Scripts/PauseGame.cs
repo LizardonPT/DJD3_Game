@@ -6,6 +6,8 @@ public class PauseGame : MonoBehaviour
     [SerializeField] private static bool gameIsPaused = false;
     [SerializeField] private GameObject pauseMenuUI = default;
     [SerializeField] private GameObject settingsUI = default;
+    [SerializeField] private AudioSource pauseSound = default;
+
 
     private void Update()
     {
@@ -29,6 +31,7 @@ public class PauseGame : MonoBehaviour
     }
     private void Pause()
     {
+        pauseSound.Play();
         Cursor.lockState = CursorLockMode.None;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
