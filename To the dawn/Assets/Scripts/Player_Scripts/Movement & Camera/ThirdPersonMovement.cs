@@ -21,6 +21,7 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private int energyDash = 10;
     [SerializeField] private AudioClip dashSound = default;
     private AudioSource myAudio;
+    private Animator anim;
     private bool isGrounded;
     private int charges;
     private float timer;
@@ -38,6 +39,7 @@ public class ThirdPersonMovement : MonoBehaviour
         charges = maxCharges;
         dashChargeText.text = "Charges: " + maxCharges.ToString();
         myAudio = this.GetComponent<AudioSource>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -97,6 +99,7 @@ public class ThirdPersonMovement : MonoBehaviour
         // Jump
         if(isGrounded && Input.GetButtonDown("Jump"))
         {
+            anim.SetTrigger("Jump");
             velocity.y = Mathf.Sqrt(jumpHeight * -1f * gravity);
         }
 
