@@ -159,7 +159,6 @@ public class HP : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("ds");
                     if(gameObject.tag == "Robot")
                     {
                         Instantiate(boom, transform.position,
