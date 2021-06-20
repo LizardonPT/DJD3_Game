@@ -65,7 +65,6 @@ public class Settings : MonoBehaviour
     /// </summary>
     public void SetFullscreen(bool isFullscreen)
     {
-        Debug.Log(isFullscreen);
         Screen.fullScreen = isFullscreen;
     }
 }

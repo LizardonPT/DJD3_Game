@@ -7,6 +7,7 @@ public class PauseGame : MonoBehaviour
     [SerializeField] private GameObject pauseMenuUI = default;
     [SerializeField] private GameObject settingsUI = default;
     [SerializeField] private AudioSource pauseSound = default;
+    [SerializeField] private AudioSource soundTrack = default;
     private int weapon = default;
 
 
@@ -42,6 +43,7 @@ public class PauseGame : MonoBehaviour
             weapon = 1;
             GameObject.Find("Player").GetComponent<PlasmaGun>().enabled = false;
         }
+        soundTrack.Pause();
         pauseSound.Play();
         Cursor.lockState = CursorLockMode.None;
         pauseMenuUI.SetActive(true);
@@ -59,6 +61,7 @@ public class PauseGame : MonoBehaviour
         {
             GameObject.Find("Player").GetComponent<PlasmaGun>().enabled = true;
         }
+        soundTrack.UnPause();
         Cursor.lockState = CursorLockMode.Locked;
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;

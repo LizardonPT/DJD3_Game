@@ -93,8 +93,6 @@ public class HP : MonoBehaviour
                 Destroy(GetComponent<HP>());
                 hp = 1;
                 // Placeholder visual feedback
-                floatingText = Instantiate(dmgTextPrefab, transform.position,
-                    Quaternion.FromToRotation(transform.position, player.transform.position), transform);
                 Instantiate(boom, transform.position,
                     new Quaternion(90f,0f,0f,0f), transform);
             }
@@ -131,6 +129,7 @@ public class HP : MonoBehaviour
             {
                 // Reset HP display to 0
                 hpText.text = "Health: 0";
+                gameObject.GetComponentInChildren<AudioSource>().Stop();
                 // Spawns the Death Screen
                 deathScreen.SetActive(true);
                 gameObject.GetComponent<PlasmaGun>().enabled = false;
@@ -145,6 +144,8 @@ public class HP : MonoBehaviour
             {
                 if(gameObject.tag == "FinalObjective")
                 {
+                    Cursor.lockState = CursorLockMode.None;
+                    Time.timeScale = 1f;
                     SceneManager.LoadScene(0);
                 }
                 // ... Updates the player Kill Streak
