@@ -8,7 +8,7 @@ public class ElectricGun : MonoBehaviour
     [SerializeField] private int damage = 2;
     [SerializeField] private int useEnergyPerShoot = 1;
     [SerializeField] private Transform firePoint = default;
-    [SerializeField] private AudioClip electricSound;
+    [SerializeField] private AudioClip electricSound = default;
     private AudioSource myAudio;
 
     private float timer;

@@ -19,7 +19,7 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private LayerMask groundMask = default;
     [SerializeField] private int maxCharges = default;
     [SerializeField] private int energyDash = 10;
-    [SerializeField] private AudioClip dashSound;
+    [SerializeField] private AudioClip dashSound = default;
     private AudioSource myAudio;
     private bool isGrounded;
     private int charges;

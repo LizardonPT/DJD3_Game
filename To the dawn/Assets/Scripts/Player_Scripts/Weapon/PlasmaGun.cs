@@ -7,7 +7,7 @@ public class PlasmaGun : MonoBehaviour
     [SerializeField] private int useEnergyPerShoot = 2;
     [SerializeField] private Transform firePoint = default;
     [SerializeField] private LineRenderer lineRend = default;
-    [SerializeField] private AudioClip plasmaSound;
+    [SerializeField] private AudioClip plasmaSound = default;
     private AudioSource myAudio;
     private float timer;
 
