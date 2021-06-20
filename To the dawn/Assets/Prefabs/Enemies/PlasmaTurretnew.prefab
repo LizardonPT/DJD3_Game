@@ -96,6 +96,7 @@ MonoBehaviour:
   hp: 3
   maxHP: 5
   hpText: {fileID: 0}
+  mask: {fileID: 0}
   deathScreen: {fileID: 0}
   dmgTextPrefab: {fileID: 8351380572959123542, guid: 0884a036710ea2747a72dd89ac414112, type: 3}
   invulnerablePrefab: {fileID: 8351380572959123542, guid: fd09faf80fa28b54bacf61533d5898f9, type: 3}
@@ -211,7 +212,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4593148468740056255, guid: 3aa4fdf83d5e6594fa7ed5f11e81de26, type: 3}
+  - {fileID: 2100000, guid: 5979f7e091f747c4792b69ea488ccca7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -243,7 +244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6624529128170694238}
   m_Layer: 0
-  m_Name: finalplasmaFF
+  m_Name: PlasmaTurretnew
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -324,7 +325,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1088713920585936488, guid: 3aa4fdf83d5e6594fa7ed5f11e81de26, type: 3}
+  - {fileID: 2100000, guid: 3f044826f21cf1f449eb1394011e1f2d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -406,7 +407,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -157460399190298031, guid: 3aa4fdf83d5e6594fa7ed5f11e81de26, type: 3}
+  - {fileID: 2100000, guid: e5099c67ec275db4eb29efea99e7f9e2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
