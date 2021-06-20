@@ -51,12 +51,16 @@ public class ThirdPersonMovement : MonoBehaviour
         timer += Time.deltaTime;
         dashTimer += Time.deltaTime;
 
-        float horizontal = Input.GetAxisRaw("Horizontal") * sensitivity;
-        float vertical = Input.GetAxisRaw("Vertical") * sensitivity;
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
         float targetAngle;
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        if(dashTimer<0.2f)
+        //float yRot = Input.GetAxisRaw("Mouse X") * sensitivity;
+        //float xRot = Input.GetAxisRaw("Mouse Y") * sensitivity;
+        //GameObject.Find("AimCamera").GetComponent<>()*= Quaternion.Euler(xRot, yRot, 0);
+
+        if (dashTimer<0.2f)
         {
             controller.Move(moveDir * (speed*4) * Time.deltaTime);
             velocity.y = 0;
