@@ -8,6 +8,8 @@ TagManager:
   - Shield
   - Innocent
   - FinalObjective
+  - FxTemporaire
+  - Robot
   layers:
   - Default
   - TransparentFX

@@ -9,6 +9,7 @@ public class HP : MonoBehaviour
     [SerializeField] private int maxHP = 5;
     [SerializeField] private TextMeshProUGUI hpText = default;
     [SerializeField] private Image mask = default;
+    [SerializeField] private GameObject boom = default;
     [SerializeField] private GameObject deathScreen = default;
     [SerializeField] private TextMeshPro dmgTextPrefab = default;
     [SerializeField] private TextMeshPro invulnerablePrefab = default;
@@ -94,6 +95,8 @@ public class HP : MonoBehaviour
                 // Placeholder visual feedback
                 floatingText = Instantiate(dmgTextPrefab, transform.position,
                     Quaternion.FromToRotation(transform.position, player.transform.position), transform);
+                Instantiate(boom, transform.position,
+                    new Quaternion(90f,0f,0f,0f), transform);
             }
             // If it is damaged
             else if (decrease > 0)
@@ -156,6 +159,12 @@ public class HP : MonoBehaviour
                 }
                 else
                 {
+                    Debug.Log("ds");
+                    if(gameObject.tag == "Robot")
+                    {
+                        Instantiate(boom, transform.position,
+                            new Quaternion(0f,0f,0f,0f));
+                    }
                     Destroy(gameObject);
                 }
             }
