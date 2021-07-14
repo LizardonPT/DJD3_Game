@@ -10,10 +10,12 @@ public class PlasmaGun : MonoBehaviour
     [SerializeField] private AudioClip plasmaSound = default;
     private AudioSource myAudio;
     private float timer;
+    private Camera cam;
 
     private void Start()
     {
         myAudio = GetComponent<AudioSource>();
+        cam = GetComponentInChildren<Camera>();
     }
 
     // Update is called once per frame
@@ -31,7 +33,7 @@ public class PlasmaGun : MonoBehaviour
     {
         if(gameObject.GetComponent<Energy>().energy - useEnergyPerShoot > 0)
         {
-            Ray ray = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
+            Ray ray = cam.ViewportPointToRay(Vector3.one * 0.5f);
             RaycastHit hitInfo;
             Vector3 direction;
             LineRenderer plasmalr;

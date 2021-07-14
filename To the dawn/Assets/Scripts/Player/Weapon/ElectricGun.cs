@@ -9,6 +9,8 @@ public class ElectricGun : MonoBehaviour
     [SerializeField] private int useEnergyPerShoot = 1;
     [SerializeField] private Transform firePoint = default;
     [SerializeField] private AudioClip electricSound = default;
+
+    private Camera cam;
     private AudioSource myAudio;
 
     private float timer;
@@ -16,6 +18,7 @@ public class ElectricGun : MonoBehaviour
     private void Start()
     {
         myAudio = GetComponent<AudioSource>();
+        cam = GetComponentInChildren<Camera>();
     }
 
     // Update is called once per frame
@@ -35,7 +38,7 @@ public class ElectricGun : MonoBehaviour
         {
             // Create ray from the camera, with the directiom from the gun to 
             // the end of the ray
-            Ray ray = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
+            Ray ray = cam.ViewportPointToRay(Vector3.one * 0.5f);
             Vector3 direction;
             RaycastHit hitInfo;
 

@@ -7,7 +7,6 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private Animator interfaceAnim = default;
     [SerializeField] private TextMeshProUGUI dashChargeText = default;
     [SerializeField] private CharacterController controller = default;
-    [SerializeField] private Transform cam = default;
     public float speed = 6f;
     public float sensitivity = 1f;
     private float mouseXSpeed = 450f;
@@ -36,11 +35,13 @@ public class ThirdPersonMovement : MonoBehaviour
     private float tempDashCooldown = 3f;
     private Vector3 moveDir;
     private Vector3 velocity;
+    private Transform cam;
 
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        cam = GetComponentInChildren<Camera>().transform;
         charges = maxCharges;
         dashChargeText.text = "Charges: " + maxCharges.ToString();
         myAudio = this.GetComponent<AudioSource>();
@@ -67,10 +68,11 @@ public class ThirdPersonMovement : MonoBehaviour
         float targetAngle;
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        GameObject.Find("3rd person Player camera").GetComponent<CinemachineFreeLook>().m_XAxis.m_MaxSpeed = mouseXSpeed;
+        /*GameObject.Find("3rd person Player camera").GetComponent<CinemachineFreeLook>().m_XAxis.m_MaxSpeed = mouseXSpeed;
         GameObject.Find("3rd person Player camera").GetComponent<CinemachineFreeLook>().m_YAxis.m_MaxSpeed = mouseYSpeed;
         GameObject.Find("AimCamera").GetComponent<CinemachineFreeLook>().m_XAxis.m_MaxSpeed = mouseAimXSpeed;
-        GameObject.Find("AimCamera").GetComponent<CinemachineFreeLook>().m_YAxis.m_MaxSpeed = mouseAimYSpeed;
+        GameObject.Find("AimCamera").GetComponent<CinemachineFreeLook>().m_YAxis.m_MaxSpeed = mouseAimYSpeed;*/
+
         //Change normal sensitivity
         mouseXSpeed = 450 * sensitivity;
         mouseYSpeed = 4 * sensitivity;
