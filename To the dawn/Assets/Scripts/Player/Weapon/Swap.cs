@@ -1,0 +1,52 @@
+﻿using UnityEngine;
+using TMPro;
+
+public class Swap : MonoBehaviour
+{
+    [SerializeField] private float swapCooldown = 2f;
+
+    [SerializeField] private PlasmaGun plGun = default;
+    [SerializeField] private ElectricGun elGun = default;
+    [SerializeField] private int energySwap = 20;
+
+    [SerializeField] private TextMeshProUGUI weaponText = default;
+    [SerializeField] private Animator interfaceAnim = default;
+    private float timer;
+
+    void Update()
+    {
+        timer += Time.deltaTime;
+        if (timer>= swapCooldown)
+        {
+            if(Input.GetButton("Swap"))
+            {
+                timer = 0f;
+                SwapGun();
+            }
+        }
+    }
+
+    private void SwapGun()
+    {
+        if(gameObject.GetComponent<Energy>().energy - energySwap > 0)
+        {
+            gameObject.GetComponent<Energy>().UpdateEnergy(energySwap);
+            if(plGun.enabled)
+            {
+                plGun.enabled = false;
+                elGun.enabled = true;
+                weaponText.text = "EletricGun";
+            }
+            else
+            {
+                plGun.enabled = true;
+                elGun.enabled = false;
+                weaponText.text = "PlasmaGun";
+            }
+        }
+        else
+        {
+            interfaceAnim.SetTrigger("NoEnergy");
+        }
+    }
+}
